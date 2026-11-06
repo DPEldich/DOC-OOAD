@@ -1,0 +1,45 @@
+---
+title: Phân loại sản phẩm
+config:
+  theme: base
+  themeVariables:
+    fontFamily: "Times New Roman"
+    fontSize: "15px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#000000"
+    primaryBorderColor: "#000000"
+    lineColor: "#000000"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    curve: linear
+    htmlLabels: false
+---
+flowchart TD
+    S((●)) --> Open([Mở chức năng Phân loại sản phẩm])
+    Open --> List([Hiển thị danh sách và các thao tác được phép])
+    List --> Choice{Chọn thao tác}
+
+    Choice -->|"Tra cứu · NV, QLY"| Find([Nhập mã hoặc tên phân loại])
+    Find --> Results([Lọc và hiển thị kết quả])
+
+    Choice -->|"Thêm · QLY"| Add([Nhập mã và tên phân loại mới<br/>rồi chọn Lưu])
+    Choice -->|"Cập nhật · QLY"| Edit([Chọn phân loại, sửa thông tin<br/>rồi chọn Lưu])
+    Add --> FormMerge{" "}
+    Edit --> FormMerge
+    FormMerge --> Save([Kiểm tra dữ liệu và lưu nếu hợp lệ])
+
+    %% UC07 quy định thao tác xóa có kiểm tra ràng buộc dữ liệu.
+    Choice -->|"Xóa · QLY"| Delete([Chọn phân loại và xác nhận xóa])
+    Delete --> Check([Kiểm tra phân loại có được sử dụng<br/>và chỉ xóa khi không có sản phẩm liên kết])
+
+    Save --> WriteMerge{" "}
+    Check --> WriteMerge
+    WriteMerge --> Refresh([Thông báo kết quả và làm mới danh sách])
+    Refresh --> Done{" "}
+    Results --> Done
+    Done --> F((●))
+
+    classDef initial fill:#000,stroke:#000,color:#000
+    classDef final fill:#fff,stroke:#000,color:#000,stroke-width:2px
+    class S initial
+    class F final
