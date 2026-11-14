@@ -1,0 +1,46 @@
+---
+title: "Phân loại sản phẩm"
+config:
+  theme: base
+  look: classic
+  htmlLabels: true
+  fontFamily: Arial
+  themeCSS: |
+    text, tspan, .nodeLabel, .edgeLabel, .label { font-family: Arial, sans-serif !important; }
+    .nodeLabel { text-align: center; }
+  themeVariables:
+    fontFamily: "Arial, sans-serif"
+    fontSize: "16px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#111111"
+    primaryBorderColor: "#333333"
+    lineColor: "#333333"
+    edgeLabelBackground: "#ffffff"
+  state:
+    useMaxWidth: false
+    wrappingWidth: 300
+    minNodeWidth: 210
+    padding: 16
+    nodeSpacing: 80
+    rankSpacing: 85
+  flowchart:
+    curve: linear
+---
+%% Đối tượng: một phân loại sản phẩm.
+%% Nguồn: UC-PLSP; SEQ-PLSP; ACT-PLSP.
+%% Cơ sở: Ch5.PhanTich.pdf, trang 44-49, 52-53.
+%% Quy ước: xóa/vô hiệu hóa là xóa logic theo trang 49, vẫn kiểm tra ràng buộc.
+%% Không được vô hiệu hóa phân loại đang có sản phẩm liên kết.
+%% Thêm, sửa, xóa: QLY; tra cứu: NV và QLY theo sơ đồ use case.
+%% Tra cứu và sửa thông tin không làm thay đổi trạng thái nên không vẽ riêng.
+%% Thêm sản phẩm đầu tiên và bỏ sản phẩm cuối là biến cố từ module Sản phẩm.
+stateDiagram-v2
+    direction TB
+    state "Chưa có sản phẩm" as ChuaSuDung
+    state "Có sản phẩm" as DangSuDung
+    state "Ngừng sử dụng" as DaVoHieuHoa
+
+    [*] --> ChuaSuDung : Thêm phân loại
+    ChuaSuDung --> DangSuDung : Thêm sản phẩm đầu tiên
+    DangSuDung --> ChuaSuDung : Bỏ sản phẩm cuối cùng
+    ChuaSuDung --> DaVoHieuHoa : Xác nhận vô hiệu hóa

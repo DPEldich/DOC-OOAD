@@ -1,0 +1,44 @@
+---
+title: "Khách hàng"
+config:
+  theme: base
+  look: classic
+  htmlLabels: true
+  fontFamily: Arial
+  themeCSS: |
+    text, tspan, .nodeLabel, .edgeLabel, .label { font-family: Arial, sans-serif !important; }
+    .nodeLabel { text-align: center; }
+  themeVariables:
+    fontFamily: "Arial, sans-serif"
+    fontSize: "16px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#111111"
+    primaryBorderColor: "#333333"
+    lineColor: "#333333"
+    edgeLabelBackground: "#ffffff"
+  state:
+    useMaxWidth: false
+    wrappingWidth: 300
+    minNodeWidth: 210
+    padding: 16
+    nodeSpacing: 80
+    rankSpacing: 85
+  flowchart:
+    curve: linear
+---
+%% Đối tượng: hồ sơ của một khách hàng.
+%% Nguồn: UC-KH; SEQ-KH; ACT-KH và ghi chú trong ảnh phạm vi.
+%% Cơ sở: Ch5.PhanTich.pdf, trang 44-49, 52-53.
+%% Khách mới được thêm trong lúc lập đơn, không có chức năng thêm độc lập.
+%% Chưa lưu là trạng thái của hồ sơ tạm trước khi lưu vào CSDL.
+%% NV tra cứu và cập nhật; tra cứu không thay đổi trạng thái nên không vẽ riêng.
+%% Cập nhật hợp lệ lưu thông tin; không hợp lệ báo lỗi và giữ thông tin cũ.
+%% Không thêm trạng thái khóa, xóa hoặc kết thúc vì nguồn không quy định.
+stateDiagram-v2
+    direction TB
+    state "Chưa lưu thông tin" as ChuaLuu
+    state "Đã lưu thông tin" as DangQuanLy
+
+    [*] --> ChuaLuu : Khách mới khi lập đơn
+    ChuaLuu --> DangQuanLy : Lưu [thông tin hợp lệ]
+    DangQuanLy --> DangQuanLy : Cập nhật thông tin

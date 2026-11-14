@@ -1,0 +1,47 @@
+---
+title: "Nhà cung cấp"
+config:
+  theme: base
+  look: classic
+  htmlLabels: true
+  fontFamily: Arial
+  themeCSS: |
+    text, tspan, .nodeLabel, .edgeLabel, .label { font-family: Arial, sans-serif !important; }
+    .nodeLabel { text-align: center; }
+  themeVariables:
+    fontFamily: "Arial, sans-serif"
+    fontSize: "16px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#111111"
+    primaryBorderColor: "#333333"
+    lineColor: "#333333"
+    edgeLabelBackground: "#ffffff"
+  state:
+    useMaxWidth: false
+    wrappingWidth: 300
+    minNodeWidth: 210
+    padding: 16
+    nodeSpacing: 80
+    rankSpacing: 85
+  flowchart:
+    curve: linear
+---
+%% Đối tượng: một nhà cung cấp.
+%% Nguồn: UC-NCC; SEQ-NCC; ACT-NCC; SEQ-PN.
+%% Cơ sở: Ch5.PhanTich.pdf, trang 44-49, 52-53.
+%% Quy ước: xóa/vô hiệu hóa là xóa logic theo trang 49.
+%% Chỉ được vô hiệu hóa khi không còn liên kết sản phẩm và không có phiếu nhập.
+%% Bỏ sản phẩm phải được xác nhận và thỏa ràng buộc theo ACT-NCC.
+%% Nguồn cung được dùng khi lập phiếu nhập; sản phẩm nhập phải thuộc nhà cung cấp.
+%% Thêm, sửa, xóa, thiết lập nguồn cung: QLY; tra cứu: NV và QLY.
+%% Tra cứu và sửa thông tin không làm đổi trạng thái nên không vẽ riêng.
+stateDiagram-v2
+    direction TB
+    state "Chưa có sản phẩm cung cấp" as ChuaCoNguonCung
+    state "Đang cung cấp sản phẩm" as DaCoNguonCung
+    state "Ngừng sử dụng" as DaVoHieuHoa
+
+    [*] --> ChuaCoNguonCung : Thêm nhà cung cấp
+    ChuaCoNguonCung --> DaCoNguonCung : Thêm sản phẩm đầu tiên
+    DaCoNguonCung --> ChuaCoNguonCung : Bỏ sản phẩm cuối cùng
+    ChuaCoNguonCung --> DaVoHieuHoa : Xác nhận vô hiệu hóa [chưa có phiếu nhập]
