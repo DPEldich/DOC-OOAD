@@ -1,0 +1,42 @@
+[
+  {
+    "code": "KH",
+    "import": "pass",
+    "cells": 23,
+    "vertices": 15,
+    "edges": 6,
+    "width": 1400,
+    "height": 841,
+    "hasSvg": true
+  },
+  {
+    "code": "NCC",
+    "import": "pass",
+    "cells": 36,
+    "vertices": 23,
+    "edges": 11,
+    "width": 1600,
+    "height": 1061,
+    "hasSvg": true
+  },
+  {
+    "code": "PLSP",
+    "import": "pass",
+    "cells": 36,
+    "vertices": 23,
+    "edges": 11,
+    "width": 1600,
+    "height": 1061,
+    "hasSvg": true
+  },
+  {
+    "code": "XT",
+    "import": "pass",
+    "cells": 45,
+    "vertices": 28,
+    "edges": 15,
+    "width": 1600,
+    "height": 1301,
+    "hasSvg": true
+  }
+]

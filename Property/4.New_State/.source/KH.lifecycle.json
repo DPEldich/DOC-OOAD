@@ -1,0 +1,89 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Sơ đồ trạng thái - Khách hàng",
+    "locale": "vi",
+    "output": "4.New_State/Tuong_tac/KH.html",
+    "quality_profile": "showcase"
+  },
+  "mainPath": [
+    "draft",
+    "saved"
+  ],
+  "states": [
+    {
+      "id": "draft",
+      "type": "start",
+      "label": "DRAFT",
+      "sublabel": "Chưa lưu hồ sơ",
+      "icon": "none"
+    },
+    {
+      "id": "saved",
+      "type": "active",
+      "label": "SAVED",
+      "sublabel": "Đã lưu hồ sơ",
+      "icon": "none"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "save",
+      "from": "draft",
+      "to": "saved",
+      "label": "lưu()",
+      "note": "[thông tin hợp lệ] / lưu hồ sơ vào CSDL"
+    },
+    {
+      "id": "update-saved",
+      "from": "saved",
+      "to": "saved",
+      "label": "cậpNhật(tt)",
+      "note": "[hợp lệ] / lưu thông tin"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "DRAFT - Xử lý trong trạng thái",
+      "items": [
+        "customerState = DRAFT",
+        "entry / khởi tạo hồ sơ khách hàng tạm",
+        "nhậpThôngTin(tt) / cập nhật bản tạm",
+        "lưu() [thông tin không hợp lệ]",
+        "/ báo lỗi; giữ hồ sơ tạm"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "SAVED - Xử lý trong trạng thái",
+      "items": [
+        "customerState = SAVED",
+        "traCứu(từKhóa) / trả thông tin khách hàng",
+        "cậpNhật(tt) [thông tin hợp lệ]",
+        "/ lưu họ tên, số điện thoại",
+        "cậpNhật(tt) [thông tin không hợp lệ]",
+        "/ báo lỗi; giữ thông tin đã lưu"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Khởi tạo",
+      "items": [
+        "tạoHồSơKhách()",
+        "[khách mới khi lập đơn]"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Quy ước và phạm vi",
+      "items": [
+        "Ký hiệu: sự kiện(tham số) [điều kiện] / hành động; xử lý ghi trong khung không làm đổi trạng thái.",
+        "Khách mới được ghi nhận trong luồng lập đơn; phân hệ Khách hàng hiện có tra cứu và cập nhật.",
+        "Tra cứu, sửa thông tin hợp lệ hoặc báo lỗi đều giữ trạng thái SAVED.",
+        "Không vẽ nút kết thúc: phạm vi hiện có chưa quy định xóa hoặc chấm dứt hồ sơ khách hàng."
+      ]
+    }
+  ]
+}

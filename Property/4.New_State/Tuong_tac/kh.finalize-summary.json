@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "lifecycle",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\3.Diagram\\4.New_State\\.source\\KH.lifecycle.json",
+    "sha256": "836b4dcbe0ab52db4e8a986a1869b1225bafaeceedda43cb927887d97e252f72",
+    "bytes": 2246
+  },
+  "artifact": {
+    "path": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\KH.html",
+    "sha256": "12c1ade276f54f5558680a83d3d8842e6ad05d5f6dfd01b9474204e7ed86405f",
+    "bytes": 803906
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [
+    {
+      "code": "i18n/locale-fallback",
+      "severity": "warning",
+      "message": "meta.locale \"vi\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English.",
+      "subject": {
+        "diagramType": "lifecycle",
+        "path": "/meta/locale"
+      },
+      "evidence": {
+        "locale": "vi",
+        "bundledLocales": [
+          "en",
+          "zh-CN",
+          "zh-TW",
+          "es",
+          "ko",
+          "ar"
+        ]
+      },
+      "supportedFixes": [
+        "Supply meta.translations for this locale.",
+        "Use a bundled locale: en, zh-CN, zh-TW, es, ko, ar."
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\kh.finalize.json",
+    "summaryReceipt": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\kh.finalize-summary.json",
+    "browserCheckReceipt": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\kh.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-15T15:05:02.708Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 4335,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

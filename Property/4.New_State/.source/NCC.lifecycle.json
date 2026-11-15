@@ -1,0 +1,120 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Sơ đồ trạng thái - Nhà cung cấp",
+    "locale": "vi",
+    "output": "4.New_State/Tuong_tac/NCC.html",
+    "quality_profile": "showcase"
+  },
+  "mainPath": [
+    "empty",
+    "supplying"
+  ],
+  "states": [
+    {
+      "id": "empty",
+      "type": "start",
+      "label": "NO_PRODUCTS",
+      "sublabel": "Chưa có sản phẩm cung ứng",
+      "icon": "none"
+    },
+    {
+      "id": "supplying",
+      "type": "active",
+      "label": "SUPPLYING",
+      "sublabel": "Đang cung cấp sản phẩm",
+      "icon": "none"
+    },
+    {
+      "id": "inactive",
+      "type": "neutral",
+      "label": "INACTIVE",
+      "sublabel": "Ngừng sử dụng",
+      "icon": "none"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "first-product",
+      "from": "empty",
+      "to": "supplying",
+      "label": "thêmSP(sp)",
+      "note": "[QLY; liên kết hợp lệ] / lưu liên kết đầu tiên"
+    },
+    {
+      "id": "last-product",
+      "from": "supplying",
+      "to": "empty",
+      "label": "bỏSP(sp)",
+      "note": "[QLY; SP cuối; được phép bỏ] / xóa liên kết cuối cùng"
+    },
+    {
+      "id": "deactivate",
+      "from": "empty",
+      "to": "inactive",
+      "label": "xóaNCC()",
+      "note": "[QLY; đã xác nhận; chưa có phiếu nhập] / vô hiệu hóa nhà cung cấp"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "NO_PRODUCTS - Xử lý trong trạng thái",
+      "items": [
+        "supplierState = NO_PRODUCTS",
+        "Số liên kết sản phẩm = 0",
+        "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+        "traCứu(từKhóa) / trả thông tin NCC",
+        "xóaNCC() [đã có phiếu nhập]",
+        "/ từ chối; giữ nguyên trạng thái"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "SUPPLYING - Xử lý trong trạng thái",
+      "items": [
+        "supplierState = SUPPLYING",
+        "Số liên kết sản phẩm > 0",
+        "thêmSP(sp) [liên kết hợp lệ]",
+        "/ lưu thêm liên kết nguồn cung",
+        "bỏSP(sp) [còn SP khác; được phép bỏ]",
+        "/ xóa liên kết được chọn",
+        "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+        "xóaNCC() / từ chối: còn sản phẩm"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "INACTIVE - Xử lý trong trạng thái",
+      "items": [
+        "supplierState = INACTIVE",
+        "entry / giữ bản ghi để lưu vết",
+        "Không dùng cho nghiệp vụ phát sinh mới"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Khởi tạo",
+      "items": [
+        "thêmNCC(tt)",
+        "[QLY; thông tin hợp lệ]",
+        "/ lưu nhà cung cấp mới"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Quy ước và phạm vi",
+      "items": [
+        "Ký hiệu: sự kiện [điều kiện] / hành động.",
+        "Thêm, sửa, xóa, thiết lập nguồn cung: QLY;",
+        "tra cứu: NV hoặc QLY. Xử lý trong khung giữ trạng thái.",
+        "Dữ liệu không hợp lệ / vi phạm ràng buộc: báo lỗi, giữ nguyên.",
+        "Chỉ vô hiệu hóa khi không còn liên kết SP và chưa có phiếu nhập.",
+        "SP dùng khi lập phiếu nhập phải thuộc nhà cung cấp đã chọn.",
+        "Quy ước thiết kế: xóa logic; kết thúc vòng đời sử dụng,",
+        "bản ghi vẫn được giữ. Không đặt luồng khôi phục chưa được quy định."
+      ]
+    }
+  ]
+}

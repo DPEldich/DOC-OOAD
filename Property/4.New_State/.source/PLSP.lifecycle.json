@@ -1,0 +1,118 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Sơ đồ trạng thái - Phân loại sản phẩm",
+    "locale": "vi",
+    "output": "4.New_State/Tuong_tac/PLSP.html",
+    "quality_profile": "showcase"
+  },
+  "mainPath": [
+    "unused",
+    "in-use"
+  ],
+  "states": [
+    {
+      "id": "unused",
+      "type": "start",
+      "label": "UNUSED",
+      "sublabel": "Chưa có sản phẩm",
+      "icon": "none"
+    },
+    {
+      "id": "in-use",
+      "type": "active",
+      "label": "IN_USE",
+      "sublabel": "Có sản phẩm",
+      "icon": "none"
+    },
+    {
+      "id": "inactive",
+      "type": "neutral",
+      "label": "INACTIVE",
+      "sublabel": "Ngừng sử dụng",
+      "icon": "none"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "first-product",
+      "from": "unused",
+      "to": "in-use",
+      "label": "gánSP(sp)",
+      "note": "[liên kết hợp lệ] / gán sản phẩm đầu tiên"
+    },
+    {
+      "id": "last-product",
+      "from": "in-use",
+      "to": "unused",
+      "label": "bỏSP(sp)",
+      "note": "[SP cuối; liên kết được gỡ hợp lệ] / gỡ liên kết sản phẩm cuối cùng"
+    },
+    {
+      "id": "deactivate",
+      "from": "unused",
+      "to": "inactive",
+      "label": "xóaPhânLoại()",
+      "note": "[QLY; đã xác nhận; không có sản phẩm] / vô hiệu hóa phân loại"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "UNUSED - Xử lý trong trạng thái",
+      "items": [
+        "categoryState = UNUSED",
+        "Số sản phẩm thuộc phân loại = 0",
+        "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+        "traCứu(từKhóa) / trả thông tin phân loại"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "IN_USE - Xử lý trong trạng thái",
+      "items": [
+        "categoryState = IN_USE",
+        "Số sản phẩm thuộc phân loại > 0",
+        "gánSP(sp) [liên kết hợp lệ]",
+        "/ lưu thêm liên kết phân loại",
+        "bỏSP(sp) [còn SP khác; hợp lệ]",
+        "/ gỡ liên kết được chọn",
+        "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+        "xóaPhânLoại() / từ chối: còn sản phẩm"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "INACTIVE - Xử lý trong trạng thái",
+      "items": [
+        "categoryState = INACTIVE",
+        "entry / giữ bản ghi để lưu vết",
+        "Không gán cho sản phẩm mới"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Khởi tạo",
+      "items": [
+        "thêmPhânLoại(tt)",
+        "[QLY; thông tin hợp lệ]",
+        "/ lưu phân loại mới"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Quy ước và phạm vi",
+      "items": [
+        "Ký hiệu: sự kiện [điều kiện] / hành động.",
+        "Thêm, sửa, xóa phân loại: QLY; tra cứu: NV hoặc QLY.",
+        "Xử lý trong khung không làm đổi trạng thái.",
+        "Dữ liệu không hợp lệ / vi phạm ràng buộc: báo lỗi, giữ nguyên.",
+        "Gán hoặc bỏ sản phẩm là biến cố từ phân hệ Sản phẩm;",
+        "thực hiện theo quyền và ràng buộc của phân hệ đó.",
+        "Quy ước thiết kế: xóa logic; chỉ kết thúc vòng đời sử dụng,",
+        "bản ghi vẫn được giữ. Không xóa khi còn sản phẩm liên kết."
+      ]
+    }
+  ]
+}

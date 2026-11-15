@@ -1,0 +1,42 @@
+{
+  "diagrams": [
+    {
+      "code": "KH",
+      "svgXml": "pass",
+      "textFit": "pass",
+      "labelsClear": "pass",
+      "orthogonalRoutes": "pass",
+      "unrelatedNodesClear": "pass",
+      "png": "PNG/KH.png"
+    },
+    {
+      "code": "NCC",
+      "svgXml": "pass",
+      "textFit": "pass",
+      "labelsClear": "pass",
+      "orthogonalRoutes": "pass",
+      "unrelatedNodesClear": "pass",
+      "png": "PNG/NCC.png"
+    },
+    {
+      "code": "PLSP",
+      "svgXml": "pass",
+      "textFit": "pass",
+      "labelsClear": "pass",
+      "orthogonalRoutes": "pass",
+      "unrelatedNodesClear": "pass",
+      "png": "PNG/PLSP.png"
+    },
+    {
+      "code": "XT",
+      "svgXml": "pass",
+      "textFit": "pass",
+      "labelsClear": "pass",
+      "orthogonalRoutes": "pass",
+      "unrelatedNodesClear": "pass",
+      "png": "PNG/XT.png"
+    }
+  ],
+  "overviewLinks": "pass",
+  "overviewResponsive": "pass"
+}

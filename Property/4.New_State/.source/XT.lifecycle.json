@@ -1,0 +1,147 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Sơ đồ trạng thái - Xác thực",
+    "locale": "vi",
+    "output": "4.New_State/Tuong_tac/XT.html",
+    "quality_profile": "showcase"
+  },
+  "mainPath": [
+    "logged-out",
+    "checking",
+    "logged-in"
+  ],
+  "states": [
+    {
+      "id": "logged-out",
+      "type": "start",
+      "label": "NOT_AUTHENTICATED",
+      "sublabel": "Chưa đăng nhập",
+      "icon": "none"
+    },
+    {
+      "id": "checking",
+      "type": "active",
+      "label": "AUTHENTICATING",
+      "sublabel": "Đang kiểm tra thông tin",
+      "icon": "none"
+    },
+    {
+      "id": "logged-in",
+      "type": "active",
+      "label": "AUTHENTICATED",
+      "sublabel": "Đã đăng nhập",
+      "icon": "none"
+    },
+    {
+      "id": "confirming",
+      "type": "waiting",
+      "label": "LOGOUT_CONFIRMATION",
+      "sublabel": "Chờ xác nhận đăng xuất",
+      "icon": "none"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "request",
+      "from": "logged-out",
+      "to": "checking",
+      "label": "đăngNhập(tên, mk)",
+      "note": "[đã nhập đủ thông tin] / gửi yêu cầu xác thực"
+    },
+    {
+      "id": "invalid",
+      "from": "checking",
+      "to": "logged-out",
+      "label": "[không có tài khoản hoạt động hoặc sai mật khẩu]",
+      "note": "/ báo lỗi; yêu cầu nhập lại"
+    },
+    {
+      "id": "valid",
+      "from": "checking",
+      "to": "logged-in",
+      "label": "[tài khoản hoạt động và mật khẩu đúng]",
+      "note": "/ tạo phiên; lưu tài khoản vào phiên; mở trang chính"
+    },
+    {
+      "id": "logout",
+      "from": "logged-in",
+      "to": "confirming",
+      "label": "đăngXuất()",
+      "note": "/ hiển thị yêu cầu xác nhận"
+    },
+    {
+      "id": "confirm",
+      "from": "confirming",
+      "to": "logged-out",
+      "label": "đồngÝĐăngXuất()",
+      "note": "/ xóa phiên; đóng trang chính"
+    },
+    {
+      "id": "cancel",
+      "from": "confirming",
+      "to": "logged-in",
+      "label": "hủyĐăngXuất()",
+      "note": "/ giữ nguyên phiên; tiếp tục làm việc"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "NOT_AUTHENTICATED - Xử lý trong trạng thái",
+      "items": [
+        "authState = NOT_AUTHENTICATED",
+        "entry / hiển thị màn hình đăng nhập",
+        "đăngNhập(tên, mk) [chưa nhập đủ]",
+        "/ báo lỗi; yêu cầu nhập lại"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "AUTHENTICATING - Xử lý trong trạng thái",
+      "items": [
+        "authState = AUTHENTICATING",
+        "do / tìm tài khoản đang hoạt động;",
+        "kiểm tra mật khẩu",
+        "Chưa tạo phiên đăng nhập"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "AUTHENTICATED - Xử lý trong trạng thái",
+      "items": [
+        "authState = AUTHENTICATED",
+        "Phiên đã lưu thông tin tài khoản",
+        "do / duy trì phiên làm việc"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "LOGOUT_CONFIRMATION - Xử lý trong trạng thái",
+      "items": [
+        "authState = LOGOUT_CONFIRMATION",
+        "do / chờ lựa chọn xác nhận hoặc hủy",
+        "Phiên hiện tại vẫn còn hiệu lực"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Khởi tạo",
+      "items": [
+        "khởi tạo ngữ cảnh",
+        "xác thực"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Quy ước và phạm vi",
+      "items": [
+        "Ký hiệu: sự kiện [điều kiện] / hành động. Nhánh không ghi sự kiện ở AUTHENTICATING là chuyển khi kiểm tra hoàn tất.",
+        "Hai điều kiện xác thực loại trừ nhau: có tài khoản hoạt động + mật khẩu đúng, hoặc điều kiện đó không thỏa.",
+        "Đăng xuất xóa phiên rồi trở về NOT_AUTHENTICATED; hủy đăng xuất giữ nguyên phiên.",
+        "Không vẽ nút kết thúc: ngữ cảnh xác thực còn có thể đăng nhập lại; đăng xuất không xóa hoặc khóa tài khoản."
+      ]
+    }
+  ]
+}
