@@ -1,0 +1,37 @@
+---
+title: Khách hàng · Nhân viên (NV)
+config:
+  theme: base
+  themeVariables:
+    fontFamily: "Times New Roman"
+    fontSize: "15px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#000000"
+    primaryBorderColor: "#000000"
+    lineColor: "#000000"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    curve: linear
+    htmlLabels: false
+---
+flowchart TD
+    %% Khách hàng mới được thêm trong luồng lập đơn hàng.
+    S((●)) --> Open([Mở chức năng Khách hàng])
+    Open --> List([Hiển thị danh sách khách hàng])
+    List --> Choice{Chọn thao tác}
+
+    Choice -->|Tra cứu| Find([Nhập mã, họ tên hoặc số điện thoại])
+    Find --> Results([Lọc và hiển thị kết quả])
+
+    Choice -->|Cập nhật| Edit([Chọn khách hàng, sửa họ tên<br/>hoặc số điện thoại rồi chọn Lưu])
+    Edit --> Save([Kiểm tra thông tin và lưu nếu hợp lệ])
+    Save --> Refresh([Thông báo kết quả và làm mới danh sách])
+
+    Results --> Done{" "}
+    Refresh --> Done
+    Done --> F((●))
+
+    classDef initial fill:#000,stroke:#000,color:#000
+    classDef final fill:#fff,stroke:#000,color:#000,stroke-width:2px
+    class S initial
+    class F final

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "8c09ce53-c6a7-4a0c-8333-229cfbd3ca6f",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "D:\\3.Diagram\\4.New_State\\.source\\NCC.lifecycle.json",
+  "output": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\NCC.html",
+  "specification": {
+    "sha256": "883fa6d5333477f6aba01ad65e086b3535d1e12241d3dfb7e99b3e6733eb33ee",
+    "bytes": 3724
+  },
+  "artifact": {
+    "sha256": "103c3fb430a482c47fde128a30daa6a0ba27ed75d9718cd1e641fc79d9516938",
+    "bytes": 809121
+  }
+}

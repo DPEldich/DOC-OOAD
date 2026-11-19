@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "lifecycle",
+  "quality": "showcase",
+  "specification": {
+    "path": "D:\\3.Diagram\\4.New_State\\.source\\XT.lifecycle.json",
+    "sha256": "718f10ce1bbffd3d342eb6349774d9d67060c34eaa92a0d6a5d363fab34d45e0",
+    "bytes": 4381
+  },
+  "artifact": {
+    "path": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\XT.html",
+    "sha256": "70d50e5559b9402633e04af45fffb09d176c0e81b0bf470b31e43d5bee364778",
+    "bytes": 813802
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [
+    {
+      "code": "i18n/locale-fallback",
+      "severity": "warning",
+      "message": "meta.locale \"vi\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English.",
+      "subject": {
+        "diagramType": "lifecycle",
+        "path": "/meta/locale"
+      },
+      "evidence": {
+        "locale": "vi",
+        "bundledLocales": [
+          "en",
+          "zh-CN",
+          "zh-TW",
+          "es",
+          "ko",
+          "ar"
+        ]
+      },
+      "supportedFixes": [
+        "Supply meta.translations for this locale.",
+        "Use a bundled locale: en, zh-CN, zh-TW, es, ko, ar."
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "D:\\3.Diagram\\4.New_State\\.source\\check-XT-2\\xt.finalize.json",
+    "summaryReceipt": "D:\\3.Diagram\\4.New_State\\.source\\check-XT-2\\xt.finalize-summary.json",
+    "browserCheckReceipt": "D:\\3.Diagram\\4.New_State\\.source\\check-XT-2\\xt.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-15T15:05:02.708Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3916,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "eee7fa16-ae80-4008-b468-f647b3343a24",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "D:\\3.Diagram\\4.New_State\\.source\\XT.lifecycle.json",
+  "output": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\XT.html",
+  "specification": {
+    "sha256": "718f10ce1bbffd3d342eb6349774d9d67060c34eaa92a0d6a5d363fab34d45e0",
+    "bytes": 4381
+  },
+  "artifact": {
+    "sha256": "70d50e5559b9402633e04af45fffb09d176c0e81b0bf470b31e43d5bee364778",
+    "bytes": 813802
+  }
+}

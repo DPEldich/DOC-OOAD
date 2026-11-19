@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4 sơ đồ trạng thái | Chương 5</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#f4f4f2;color:#222;font:16px/1.6 Arial,sans-serif}main{max-width:1720px;margin:auto;padding:40px 32px 72px}h1{font-size:32px;line-height:1.25;margin:0 0 12px}header p{max-width:1000px;margin:8px 0;color:#555}nav{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 36px}a{color:#303f92;text-underline-offset:4px}nav a{padding:6px 14px;border:1px solid #ccc;border-radius:4px;background:white;text-decoration:none}section{margin:28px 0 48px;scroll-margin-top:24px}h2{font-size:22px;margin:0}section>div{display:flex;align-items:baseline;gap:24px;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}.links{display:flex;gap:20px;flex-wrap:wrap;font-size:14px}.canvas{background:white;border:1px solid #d0d0cc;overflow:hidden}img{display:block;width:100%;height:auto}footer{font-size:14px;color:#666;border-top:1px solid #ccc;padding-top:20px}@media(max-width:800px){main{padding:24px 14px}h1{font-size:27px}.links{gap:14px}section>div{gap:8px}}
+</style>
+<main>
+  <header>
+    <h1>4 sơ đồ trạng thái</h1>
+    <p>Dựng theo ký pháp Chương 5 và bố cục mẫu Đơn hàng: trạng thái có ngăn thuộc tính, xử lý nội bộ; đường chuyển ghi sự kiện, điều kiện và hành động.</p>
+    <p>Mở SVG để xem toàn kích thước hoặc chèn báo cáo. Mở <strong>nguồn draw.io</strong> trong diagrams.net để sửa từng khối và mũi tên.</p>
+  </header>
+  <nav aria-label="Các sơ đồ">
+    <a href="#kh">Khách hàng</a><a href="#ncc">Nhà cung cấp</a><a href="#plsp">Phân loại sản phẩm</a><a href="#xt">Xác thực</a>
+  </nav>
+  <section id="kh">
+    <div><h2>01. Khách hàng</h2><div class="links"><a href="KH.drawio.svg">SVG</a><a href="PNG/KH.png">PNG</a><a href="Nguon_drawio/KH.drawio">Nguồn draw.io</a><a href="Tuong_tac/KH.html">Xem luồng rút gọn</a></div></div>
+    <div class="canvas"><img src="KH.drawio.svg" alt="Sơ đồ trạng thái hồ sơ Khách hàng: DRAFT chuyển sang SAVED khi thông tin hợp lệ."></div>
+  </section>
+  <section id="ncc">
+    <div><h2>02. Nhà cung cấp</h2><div class="links"><a href="NCC.drawio.svg">SVG</a><a href="PNG/NCC.png">PNG</a><a href="Nguon_drawio/NCC.drawio">Nguồn draw.io</a><a href="Tuong_tac/NCC.html">Xem luồng rút gọn</a></div></div>
+    <div class="canvas"><img src="NCC.drawio.svg" alt="Sơ đồ trạng thái Nhà cung cấp: NO_PRODUCTS, SUPPLYING và INACTIVE."></div>
+  </section>
+  <section id="plsp">
+    <div><h2>03. Phân loại sản phẩm</h2><div class="links"><a href="PLSP.drawio.svg">SVG</a><a href="PNG/PLSP.png">PNG</a><a href="Nguon_drawio/PLSP.drawio">Nguồn draw.io</a><a href="Tuong_tac/PLSP.html">Xem luồng rút gọn</a></div></div>
+    <div class="canvas"><img src="PLSP.drawio.svg" alt="Sơ đồ trạng thái Phân loại sản phẩm: UNUSED, IN_USE và INACTIVE."></div>
+  </section>
+  <section id="xt">
+    <div><h2>04. Xác thực</h2><div class="links"><a href="XT.drawio.svg">SVG</a><a href="PNG/XT.png">PNG</a><a href="Nguon_drawio/XT.drawio">Nguồn draw.io</a><a href="Tuong_tac/XT.html">Xem luồng rút gọn</a></div></div>
+    <div class="canvas"><img src="XT.drawio.svg" alt="Sơ đồ trạng thái xác thực: chưa đăng nhập, đang xác thực, đã đăng nhập và chờ xác nhận đăng xuất."></div>
+  </section>
+  <footer>
+    <p>Quy ước: xóa NCC/phân loại là xóa logic; dữ liệu vẫn được giữ. Khách hàng và ngữ cảnh xác thực chưa có biến cố kết thúc trong phạm vi hiện có.</p>
+    <p>Bản xem luồng rút gọn dùng thanh công cụ tiếng Anh; sơ đồ UML đầy đủ là bản SVG ở trên. Xem <a href="README.md">phạm vi và nguồn nghiệp vụ</a>.</p>
+  </footer>
+</main>
+</html>

@@ -1,0 +1,841 @@
+[
+  {
+    "code": "KH",
+    "name": "Khách hàng",
+    "size": [
+      1480,
+      860
+    ],
+    "subtitle": "Đối tượng: một hồ sơ khách hàng | Góc nhìn: tình trạng lưu hồ sơ | Người thao tác: NV",
+    "initial": [
+      300,
+      140
+    ],
+    "states": [
+      {
+        "id": "draft",
+        "x": 80,
+        "y": 250,
+        "w": 440,
+        "h": 255,
+        "title": "DRAFT",
+        "description": "Chưa lưu hồ sơ",
+        "attribute": "customerState = DRAFT",
+        "lines": [
+          "entry / khởi tạo hồ sơ khách hàng tạm",
+          "nhậpThôngTin(tt) / cập nhật bản tạm",
+          "lưu() [thông tin không hợp lệ]",
+          "    / báo lỗi; giữ hồ sơ tạm"
+        ]
+      },
+      {
+        "id": "saved",
+        "x": 950,
+        "y": 250,
+        "w": 450,
+        "h": 325,
+        "title": "SAVED",
+        "description": "Đã lưu hồ sơ",
+        "attribute": "customerState = SAVED",
+        "lines": [
+          "traCứu(từKhóa) / trả thông tin khách hàng",
+          "cậpNhật(tt) [thông tin hợp lệ]",
+          "    / lưu họ tên, số điện thoại",
+          "cậpNhật(tt) [thông tin không hợp lệ]",
+          "    / báo lỗi; giữ thông tin đã lưu"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "create",
+        "source": "initial",
+        "target": "draft",
+        "points": [
+          [
+            300,
+            152
+          ],
+          [
+            300,
+            250
+          ]
+        ],
+        "label": [
+          "tạoHồSơKhách()",
+          "[khách mới khi lập đơn]"
+        ],
+        "at": [
+          525,
+          186
+        ],
+        "width": 430
+      },
+      {
+        "id": "save",
+        "source": "draft",
+        "target": "saved",
+        "points": [
+          [
+            520,
+            375
+          ],
+          [
+            950,
+            375
+          ]
+        ],
+        "label": [
+          "lưu()",
+          "[thông tin hợp lệ]",
+          "/ lưu hồ sơ vào CSDL"
+        ],
+        "at": [
+          735,
+          310
+        ],
+        "width": 400
+      }
+    ],
+    "note": [
+      60,
+      660,
+      1360,
+      155
+    ],
+    "notes": [
+      "Ký hiệu: sự kiện(tham số) [điều kiện] / hành động; xử lý ghi trong khung không làm đổi trạng thái.",
+      "Khách mới được ghi nhận trong luồng lập đơn; phân hệ Khách hàng hiện có tra cứu và cập nhật.",
+      "Tra cứu, sửa thông tin hợp lệ hoặc báo lỗi đều giữ trạng thái SAVED.",
+      "Không vẽ nút kết thúc: phạm vi hiện có chưa quy định xóa hoặc chấm dứt hồ sơ khách hàng."
+    ],
+    "sources": "Nguồn nghiệp vụ: UC-KH, SEQ-KH, ACT-KH; luồng thêm khách khi lập đơn theo mô hình hiện có.",
+    "main": [
+      "draft",
+      "saved"
+    ],
+    "types": {
+      "draft": "start",
+      "saved": "active"
+    }
+  },
+  {
+    "code": "NCC",
+    "name": "Nhà cung cấp",
+    "size": [
+      1680,
+      1080
+    ],
+    "subtitle": "Đối tượng: một nhà cung cấp | Góc nhìn: tình trạng sử dụng và nguồn cung sản phẩm",
+    "initial": [
+      305,
+      130
+    ],
+    "states": [
+      {
+        "id": "empty",
+        "x": 90,
+        "y": 250,
+        "w": 430,
+        "h": 300,
+        "title": "NO_PRODUCTS",
+        "description": "Chưa có sản phẩm cung ứng",
+        "attribute": "supplierState = NO_PRODUCTS",
+        "lines": [
+          "Số liên kết sản phẩm = 0",
+          "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+          "traCứu(từKhóa) / trả thông tin NCC",
+          "xóaNCC() [đã có phiếu nhập]",
+          "    / từ chối; giữ nguyên trạng thái"
+        ]
+      },
+      {
+        "id": "supplying",
+        "x": 1120,
+        "y": 250,
+        "w": 470,
+        "h": 345,
+        "title": "SUPPLYING",
+        "description": "Đang cung cấp sản phẩm",
+        "attribute": "supplierState = SUPPLYING",
+        "lines": [
+          "Số liên kết sản phẩm > 0",
+          "thêmSP(sp) [liên kết hợp lệ]",
+          "    / lưu thêm liên kết nguồn cung",
+          "bỏSP(sp) [còn SP khác; được phép bỏ]",
+          "    / xóa liên kết được chọn",
+          "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+          "xóaNCC() / từ chối: còn sản phẩm"
+        ]
+      },
+      {
+        "id": "inactive",
+        "x": 90,
+        "y": 800,
+        "w": 430,
+        "h": 170,
+        "title": "INACTIVE",
+        "description": "Ngừng sử dụng",
+        "attribute": "supplierState = INACTIVE",
+        "lines": [
+          "entry / giữ bản ghi để lưu vết",
+          "Không dùng cho nghiệp vụ phát sinh mới"
+        ]
+      }
+    ],
+    "final": [
+      305,
+      1010
+    ],
+    "edges": [
+      {
+        "id": "create",
+        "source": "initial",
+        "target": "empty",
+        "points": [
+          [
+            305,
+            142
+          ],
+          [
+            305,
+            250
+          ]
+        ],
+        "label": [
+          "thêmNCC(tt)",
+          "[QLY; thông tin hợp lệ]",
+          "/ lưu nhà cung cấp mới"
+        ],
+        "at": [
+          570,
+          175
+        ],
+        "width": 470
+      },
+      {
+        "id": "first-product",
+        "source": "empty",
+        "target": "supplying",
+        "points": [
+          [
+            520,
+            345
+          ],
+          [
+            1120,
+            345
+          ]
+        ],
+        "label": [
+          "thêmSP(sp)",
+          "[QLY; liên kết hợp lệ]",
+          "/ lưu liên kết đầu tiên"
+        ],
+        "at": [
+          820,
+          275
+        ],
+        "width": 550
+      },
+      {
+        "id": "last-product",
+        "source": "supplying",
+        "target": "empty",
+        "points": [
+          [
+            1120,
+            520
+          ],
+          [
+            520,
+            520
+          ]
+        ],
+        "label": [
+          "bỏSP(sp)",
+          "[QLY; SP cuối; được phép bỏ]",
+          "/ xóa liên kết cuối cùng"
+        ],
+        "at": [
+          820,
+          465
+        ],
+        "width": 550
+      },
+      {
+        "id": "deactivate",
+        "source": "empty",
+        "target": "inactive",
+        "points": [
+          [
+            305,
+            550
+          ],
+          [
+            305,
+            800
+          ]
+        ],
+        "label": [
+          "xóaNCC()",
+          "[QLY; đã xác nhận; chưa có phiếu nhập]",
+          "/ vô hiệu hóa nhà cung cấp"
+        ],
+        "at": [
+          600,
+          657
+        ],
+        "width": 550
+      },
+      {
+        "id": "finish",
+        "source": "inactive",
+        "target": "final",
+        "points": [
+          [
+            305,
+            970
+          ],
+          [
+            305,
+            995
+          ]
+        ],
+        "label": [],
+        "at": [
+          0,
+          0
+        ],
+        "width": 550
+      }
+    ],
+    "note": [
+      770,
+      755,
+      830,
+      265
+    ],
+    "notes": [
+      "Ký hiệu: sự kiện [điều kiện] / hành động.",
+      "Thêm, sửa, xóa, thiết lập nguồn cung: QLY;",
+      "tra cứu: NV hoặc QLY. Xử lý trong khung giữ trạng thái.",
+      "Dữ liệu không hợp lệ / vi phạm ràng buộc: báo lỗi, giữ nguyên.",
+      "Chỉ vô hiệu hóa khi không còn liên kết SP và chưa có phiếu nhập.",
+      "SP dùng khi lập phiếu nhập phải thuộc nhà cung cấp đã chọn.",
+      "Quy ước thiết kế: xóa logic; kết thúc vòng đời sử dụng,",
+      "bản ghi vẫn được giữ. Không đặt luồng khôi phục chưa được quy định."
+    ],
+    "sources": "Nguồn nghiệp vụ: UC-NCC, SEQ-NCC, ACT-NCC và SEQ-PN.",
+    "main": [
+      "empty",
+      "supplying"
+    ],
+    "types": {
+      "empty": "start",
+      "supplying": "active",
+      "inactive": "neutral"
+    }
+  },
+  {
+    "code": "PLSP",
+    "name": "Phân loại sản phẩm",
+    "size": [
+      1680,
+      1080
+    ],
+    "subtitle": "Đối tượng: một phân loại sản phẩm | Góc nhìn: tình trạng sử dụng của phân loại",
+    "initial": [
+      305,
+      130
+    ],
+    "states": [
+      {
+        "id": "unused",
+        "x": 90,
+        "y": 250,
+        "w": 430,
+        "h": 280,
+        "title": "UNUSED",
+        "description": "Chưa có sản phẩm",
+        "attribute": "categoryState = UNUSED",
+        "lines": [
+          "Số sản phẩm thuộc phân loại = 0",
+          "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+          "traCứu(từKhóa) / trả thông tin phân loại"
+        ]
+      },
+      {
+        "id": "in-use",
+        "x": 1120,
+        "y": 250,
+        "w": 470,
+        "h": 345,
+        "title": "IN_USE",
+        "description": "Có sản phẩm",
+        "attribute": "categoryState = IN_USE",
+        "lines": [
+          "Số sản phẩm thuộc phân loại > 0",
+          "gánSP(sp) [liên kết hợp lệ]",
+          "    / lưu thêm liên kết phân loại",
+          "bỏSP(sp) [còn SP khác; hợp lệ]",
+          "    / gỡ liên kết được chọn",
+          "cậpNhật(tt) [hợp lệ] / lưu thông tin",
+          "xóaPhânLoại() / từ chối: còn sản phẩm"
+        ]
+      },
+      {
+        "id": "inactive",
+        "x": 90,
+        "y": 800,
+        "w": 430,
+        "h": 170,
+        "title": "INACTIVE",
+        "description": "Ngừng sử dụng",
+        "attribute": "categoryState = INACTIVE",
+        "lines": [
+          "entry / giữ bản ghi để lưu vết",
+          "Không gán cho sản phẩm mới"
+        ]
+      }
+    ],
+    "final": [
+      305,
+      1010
+    ],
+    "edges": [
+      {
+        "id": "create",
+        "source": "initial",
+        "target": "unused",
+        "points": [
+          [
+            305,
+            142
+          ],
+          [
+            305,
+            250
+          ]
+        ],
+        "label": [
+          "thêmPhânLoại(tt)",
+          "[QLY; thông tin hợp lệ]",
+          "/ lưu phân loại mới"
+        ],
+        "at": [
+          570,
+          175
+        ],
+        "width": 470
+      },
+      {
+        "id": "first-product",
+        "source": "unused",
+        "target": "in-use",
+        "points": [
+          [
+            520,
+            345
+          ],
+          [
+            1120,
+            345
+          ]
+        ],
+        "label": [
+          "gánSP(sp)",
+          "[liên kết hợp lệ]",
+          "/ gán sản phẩm đầu tiên"
+        ],
+        "at": [
+          820,
+          275
+        ],
+        "width": 550
+      },
+      {
+        "id": "last-product",
+        "source": "in-use",
+        "target": "unused",
+        "points": [
+          [
+            1120,
+            500
+          ],
+          [
+            520,
+            500
+          ]
+        ],
+        "label": [
+          "bỏSP(sp)",
+          "[SP cuối; liên kết được gỡ hợp lệ]",
+          "/ gỡ liên kết sản phẩm cuối cùng"
+        ],
+        "at": [
+          820,
+          435
+        ],
+        "width": 550
+      },
+      {
+        "id": "deactivate",
+        "source": "unused",
+        "target": "inactive",
+        "points": [
+          [
+            305,
+            530
+          ],
+          [
+            305,
+            800
+          ]
+        ],
+        "label": [
+          "xóaPhânLoại()",
+          "[QLY; đã xác nhận; không có sản phẩm]",
+          "/ vô hiệu hóa phân loại"
+        ],
+        "at": [
+          600,
+          648
+        ],
+        "width": 550
+      },
+      {
+        "id": "finish",
+        "source": "inactive",
+        "target": "final",
+        "points": [
+          [
+            305,
+            970
+          ],
+          [
+            305,
+            995
+          ]
+        ],
+        "label": [],
+        "at": [
+          0,
+          0
+        ],
+        "width": 550
+      }
+    ],
+    "note": [
+      770,
+      755,
+      830,
+      265
+    ],
+    "notes": [
+      "Ký hiệu: sự kiện [điều kiện] / hành động.",
+      "Thêm, sửa, xóa phân loại: QLY; tra cứu: NV hoặc QLY.",
+      "Xử lý trong khung không làm đổi trạng thái.",
+      "Dữ liệu không hợp lệ / vi phạm ràng buộc: báo lỗi, giữ nguyên.",
+      "Gán hoặc bỏ sản phẩm là biến cố từ phân hệ Sản phẩm;",
+      "thực hiện theo quyền và ràng buộc của phân hệ đó.",
+      "Quy ước thiết kế: xóa logic; chỉ kết thúc vòng đời sử dụng,",
+      "bản ghi vẫn được giữ. Không xóa khi còn sản phẩm liên kết."
+    ],
+    "sources": "Nguồn nghiệp vụ: UC-PLSP, SEQ-PLSP, ACT-PLSP; thay đổi liên kết từ phân hệ Sản phẩm.",
+    "main": [
+      "unused",
+      "in-use"
+    ],
+    "types": {
+      "unused": "start",
+      "in-use": "active",
+      "inactive": "neutral"
+    }
+  },
+  {
+    "code": "XT",
+    "name": "Xác thực",
+    "size": [
+      1680,
+      1320
+    ],
+    "subtitle": "Đối tượng: ngữ cảnh xác thực của một người dùng hệ thống (NDHT) | Góc nhìn: tình trạng đăng nhập",
+    "initial": [
+      170,
+      155
+    ],
+    "states": [
+      {
+        "id": "logged-out",
+        "x": 90,
+        "y": 250,
+        "w": 430,
+        "h": 230,
+        "title": "NOT_AUTHENTICATED",
+        "description": "Chưa đăng nhập",
+        "attribute": "authState = NOT_AUTHENTICATED",
+        "lines": [
+          "entry / hiển thị màn hình đăng nhập",
+          "đăngNhập(tên, mk) [chưa nhập đủ]",
+          "    / báo lỗi; yêu cầu nhập lại"
+        ]
+      },
+      {
+        "id": "checking",
+        "x": 1120,
+        "y": 250,
+        "w": 470,
+        "h": 230,
+        "title": "AUTHENTICATING",
+        "description": "Đang kiểm tra thông tin",
+        "attribute": "authState = AUTHENTICATING",
+        "lines": [
+          "do / tìm tài khoản đang hoạt động;",
+          "     kiểm tra mật khẩu",
+          "Chưa tạo phiên đăng nhập"
+        ]
+      },
+      {
+        "id": "logged-in",
+        "x": 1120,
+        "y": 790,
+        "w": 470,
+        "h": 180,
+        "title": "AUTHENTICATED",
+        "description": "Đã đăng nhập",
+        "attribute": "authState = AUTHENTICATED",
+        "lines": [
+          "Phiên đã lưu thông tin tài khoản",
+          "do / duy trì phiên làm việc"
+        ]
+      },
+      {
+        "id": "confirming",
+        "x": 90,
+        "y": 790,
+        "w": 430,
+        "h": 180,
+        "title": "LOGOUT_CONFIRMATION",
+        "description": "Chờ xác nhận đăng xuất",
+        "attribute": "authState = LOGOUT_CONFIRMATION",
+        "lines": [
+          "do / chờ lựa chọn xác nhận hoặc hủy",
+          "Phiên hiện tại vẫn còn hiệu lực"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "open",
+        "source": "initial",
+        "target": "logged-out",
+        "points": [
+          [
+            170,
+            167
+          ],
+          [
+            170,
+            250
+          ]
+        ],
+        "label": [
+          "khởi tạo ngữ cảnh",
+          "xác thực"
+        ],
+        "at": [
+          290,
+          195
+        ],
+        "width": 230
+      },
+      {
+        "id": "request",
+        "source": "logged-out",
+        "target": "checking",
+        "points": [
+          [
+            520,
+            350
+          ],
+          [
+            1120,
+            350
+          ]
+        ],
+        "label": [
+          "đăngNhập(tên, mk)",
+          "[đã nhập đủ thông tin]",
+          "/ gửi yêu cầu xác thực"
+        ],
+        "at": [
+          820,
+          295
+        ],
+        "width": 550
+      },
+      {
+        "id": "invalid",
+        "source": "checking",
+        "target": "logged-out",
+        "points": [
+          [
+            1355,
+            250
+          ],
+          [
+            1355,
+            150
+          ],
+          [
+            430,
+            150
+          ],
+          [
+            430,
+            250
+          ]
+        ],
+        "label": [
+          "[không có tài khoản hoạt động hoặc sai mật khẩu]",
+          "/ báo lỗi; yêu cầu nhập lại"
+        ],
+        "at": [
+          885,
+          112
+        ],
+        "width": 800
+      },
+      {
+        "id": "valid",
+        "source": "checking",
+        "target": "logged-in",
+        "points": [
+          [
+            1355,
+            480
+          ],
+          [
+            1355,
+            790
+          ]
+        ],
+        "label": [
+          "[tài khoản hoạt động và mật khẩu đúng]",
+          "/ tạo phiên; lưu tài khoản vào phiên;",
+          "mở trang chính"
+        ],
+        "at": [
+          1050,
+          690
+        ],
+        "width": 580
+      },
+      {
+        "id": "logout",
+        "source": "logged-in",
+        "target": "confirming",
+        "points": [
+          [
+            1120,
+            860
+          ],
+          [
+            520,
+            860
+          ]
+        ],
+        "label": [
+          "đăngXuất()",
+          "/ hiển thị yêu cầu xác nhận"
+        ],
+        "at": [
+          820,
+          820
+        ],
+        "width": 550
+      },
+      {
+        "id": "confirm",
+        "source": "confirming",
+        "target": "logged-out",
+        "points": [
+          [
+            305,
+            790
+          ],
+          [
+            305,
+            480
+          ]
+        ],
+        "label": [
+          "đồngÝĐăngXuất()",
+          "/ xóa phiên; đóng trang chính"
+        ],
+        "at": [
+          600,
+          570
+        ],
+        "width": 550
+      },
+      {
+        "id": "cancel",
+        "source": "confirming",
+        "target": "logged-in",
+        "points": [
+          [
+            305,
+            970
+          ],
+          [
+            305,
+            1050
+          ],
+          [
+            1355,
+            1050
+          ],
+          [
+            1355,
+            970
+          ]
+        ],
+        "label": [
+          "hủyĐăngXuất()",
+          "/ giữ nguyên phiên; tiếp tục làm việc"
+        ],
+        "at": [
+          820,
+          1010
+        ],
+        "width": 670
+      }
+    ],
+    "note": [
+      60,
+      1120,
+      1560,
+      150
+    ],
+    "notes": [
+      "Ký hiệu: sự kiện [điều kiện] / hành động. Nhánh không ghi sự kiện ở AUTHENTICATING là chuyển khi kiểm tra hoàn tất.",
+      "Hai điều kiện xác thực loại trừ nhau: có tài khoản hoạt động + mật khẩu đúng, hoặc điều kiện đó không thỏa.",
+      "Đăng xuất xóa phiên rồi trở về NOT_AUTHENTICATED; hủy đăng xuất giữ nguyên phiên.",
+      "Không vẽ nút kết thúc: ngữ cảnh xác thực còn có thể đăng nhập lại; đăng xuất không xóa hoặc khóa tài khoản."
+    ],
+    "sources": "Nguồn nghiệp vụ: UC-XT, SEQ đăng nhập, SEQ đăng xuất và ACT-XT.",
+    "main": [
+      "logged-out",
+      "checking",
+      "logged-in"
+    ],
+    "types": {
+      "logged-out": "start",
+      "checking": "active",
+      "logged-in": "active",
+      "confirming": "waiting"
+    }
+  }
+]

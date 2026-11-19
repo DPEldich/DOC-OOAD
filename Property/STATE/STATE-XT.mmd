@@ -1,0 +1,47 @@
+---
+title: "Xác thực"
+config:
+  theme: base
+  look: classic
+  htmlLabels: true
+  fontFamily: Arial
+  themeCSS: |
+    text, tspan, .nodeLabel, .edgeLabel, .label { font-family: Arial, sans-serif !important; }
+    .nodeLabel { text-align: center; }
+  themeVariables:
+    fontFamily: "Arial, sans-serif"
+    fontSize: "16px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#111111"
+    primaryBorderColor: "#333333"
+    lineColor: "#333333"
+    edgeLabelBackground: "#ffffff"
+  state:
+    useMaxWidth: false
+    wrappingWidth: 300
+    minNodeWidth: 210
+    padding: 16
+    nodeSpacing: 80
+    rankSpacing: 85
+  flowchart:
+    curve: linear
+---
+%% Đối tượng: trạng thái đăng nhập của người dùng.
+%% Nguồn: UC-XT; SEQ đăng nhập, đăng xuất; ACT-XT.
+%% Cơ sở: Ch5.PhanTich.pdf, trang 44-49, 52-53.
+%% Tài khoản hợp lệ: đang hoạt động và nhập đúng mật khẩu.
+%% Đăng xuất chỉ kết thúc phiên, không kết thúc vòng đời tài khoản.
+stateDiagram-v2
+    direction TB
+    state "Chưa đăng nhập" as ChuaDangNhap
+    state "Đang kiểm tra" as DangXacThuc
+    state "Đã đăng nhập" as DaDangNhap
+    state "Chờ xác nhận đăng xuất" as ChoXacNhan
+
+    [*] --> ChuaDangNhap
+    ChuaDangNhap --> DangXacThuc : Chọn đăng nhập
+    DangXacThuc --> ChuaDangNhap : Thông tin chưa đúng
+    DangXacThuc --> DaDangNhap : Đăng nhập thành công
+    DaDangNhap --> ChoXacNhan : Chọn đăng xuất
+    ChoXacNhan --> DaDangNhap : Hủy đăng xuất
+    ChoXacNhan --> ChuaDangNhap : Xác nhận đăng xuất

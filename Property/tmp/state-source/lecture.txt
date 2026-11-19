@@ -1,0 +1,2060 @@
+
+=== PAGE 1 ===
+LOGO
+Chương
+ 
+5:
+Phân
+ 
+tích
+1
+
+=== PAGE 2 ===
+LOGO
+Tài liệu tham khảo
+❖ Bài giảng dựa chính trên bài giảng “Xây dựng 
+phần mềm hướng đối tượng” - ThS Trần Minh Triết 
+– ĐH KHTN
+❖ Bài giảng “Phân tích và thiết kế hướng đối tượng” 
+– TS Phạm Ngọc Nam – ĐH BK HN
+❖ Bài giảng “Phân tích và thiết kế hướng đối tượng” 
+– ThS Phạm Nguyễn Cương – ĐH KHTN
+❖….
+2
+
+=== PAGE 3 ===
+LOGO
+www.themegallery.com Company Name
+Nội dung
+1. Sơ đồ lớp ở mức phân tích
+2. Sơ đồ lớp và
+ Khả năng tiến hóa của hệ thống
+3. Sơ đồ trạng thái
+
+=== PAGE 4 ===
+LOGO
+www.themegallery.com Company Name
+Sơ đồ lớp ở mức phân tích
+1. Xác định các lớp đối tượng chính
+2. Xác định các thông tin 
+và hành động/trách nhiệm của 
+mỗi lớp đối tượng chính
+3. Xác định các quan hệ chính
+4. Xác định các lớp đối tượng phụ, 
+các danh mục  
+
+=== PAGE 5 ===
+LOGO
+Nội dung
+❖Sơ đồ lớp ở mức phân tích
+▪ Xác định các lớp đối tượng chính
+▪ Xác định các thông tin và hành động/trách nhiệm của mỗi lớp đối 
+tượng chính
+▪ Xác định các quan hệ chính
+▪ Xác định các lớp đối tượng phụ, các danh mục
+❖Sơ đồ lớp và Khả năng tiến hóa của hệ thống
+❖Sơ đồ trạng thái
+▪ Khái niệm và các ký hiệu
+• Trạng thái
+• Biến cố, điều kiện
+• Trạng thái đầu, trạng thái cuối
+• Superstate
+▪ Áp dụng
+5
+
+=== PAGE 6 ===
+LOGO
+Một số khái niệm mở đầu
+❖Vấn đề: Mô tả lại bằng một ngôn ngữ nào 
+đó (thường là các sơ đồ) nhằm diễn tả 
+trực quan về vấn đề
+❖Phân tích: xây dựng mô hình Thế giới thực
+❖Phân tích theo hướng đối tượng: xây dựng 
+các mô hình về các đối tượng của Thế giới 
+thực
+6
+
+=== PAGE 7 ===
+LOGO
+Một số khái niệm mở đầu
+❖Một số loại Sơ đồ:
+▪ Sơ đồ lớp đối tượng: Mô tả hệ thống các lớp 
+đối tượng (thuộc tính, hành động) cùng với 
+các quan hệ giữa chúng
+▪ Sơ đồ trạng thái: Mô tả chu trình sống của đối 
+tượng
+▪ …
+7
+
+=== PAGE 8 ===
+LOGO
+Nhắc lại về hướng đối tượng
+8
+
+=== PAGE 9 ===
+LOGO
+Nhắc lại về hướng đối tượng 
+9
+Tên class Tên class
+(Các) phương thức
+(Các) thuộc tính
+Một số ký hiệu
+Đối tượng:class
+thuộc tính = giá trị
+Đối tượng
+thuộc tính = giá trị
+
+=== PAGE 10 ===
+LOGO
+Public/Protected/Private
+10
++  Thuộc tính/Phương thức public
+-  Thuộc tính/Phương thức private
+#  Thuộc tính/Phương thức protected
+Phương thức 
+Public
+Phương thức 
+Protected  
+Phương thực
+Private
+Class
+- privateAttribute
+# protectedAttribute
++publicOp()
+# protectedOp()
+- privateOp()
+
+=== PAGE 11 ===
+LOGO
+Tầm vực
+❖ Xác định số lượng thể hiện của thuộc tính / phương thức
+11
+Class
+- classifierScopeAttribute
+classifierScopeOperation()
+- instanceScopeAttribute
+instanceScopeOperation()
+
+=== PAGE 12 ===
+LOGO
+Ví dụ
+12
+Student
+- name
+- address
+- nextAvailID : int
++ addSchedule(theSchedule : Schedule, forSemester : Semester)
++ getSchedule(forSemester : Semester) : Schedule
++ hasPrerequisites(forCourseOffering : CourseOffering) : boolean
+# passed(theCourseOffering : CourseOffering) : boolean
++ getNextAvailID() : int
+- studentID
+
+=== PAGE 13 ===
+LOGO
+Nhận xét
+13
+Tên class
+(Các) phương thức
+(Các) thuộc tính
+Bình thường: Class bình thường
+In nghiêng
+: Class thuần ảo
+Gạch dưới
+: Object (không phải class)
+Bình thường: Thuộc tính bình thường
+In nghiêng
+: không sử dụng
+Gạch dưới
+: Thuộc tính static
+Bình thường: Phương thức bình thường
+In nghiêng
+: Phương thức virtual
+Gạch dưới
+: Phương thức static
+
+=== PAGE 14 ===
+LOGO
+Ví dụ
+14
+CTamGiac
+# CDiem P1
+# CDiem P2
+# CDiem P3
++ CTamGiac()
++ float      DienTich()
++ float      ChuVi()
++ void      Ve()
++ ...
+CTuGiac
+# CDiem P1
+# CDiem P2
+# CDiem P3
+# CDiem P4
++ CTuGiac()
++ float      DienTich()
++ float      ChuVi()
++ void      Ve()
++ ...
+CEllipse
+# CDiem Tam
+# float A
+# float B
++ CEllipse()
++ float      DienTich()
++ float      ChuVi()
++ void      Ve()
++ ...
+CHinhVe
+# int         MaLoaiHinhVe
++ float      DienTich()
++ float      ChuVi()
++ void      Ve()
++ ...
+
+=== PAGE 15 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Quan hệ kế thừa
+▪ ClassB kế thừa từ ClassA
+▪ ClassB là một trường hợp đặc biệt của ClassA
+▪ ClassA là trường hợp tổng quát của ClassB
+15
+ClassA
+ClassB
+
+=== PAGE 16 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Quan hệ Association
+▪ Hoặc
+• Trong ClassA có thuộc tính có kiểu là ClassB
+▪ Hoặc
+• Trong ClassB có thuộc tính có kiểu là ClassA 
+▪ Nhận xét: Về mặt lập trình, thuộc tính có thể 
+được lưu trữ dạng biến đơn, biến mảng, hay 
+biến con trỏ
+▪ Ví dụ:?
+16
+ClassA ClassB
+
+=== PAGE 17 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Quan hệ Aggregation
+▪ Đã xác định được ClassA và ClassB có quan 
+hệ Association với nhau
+▪ Xác định rõ hơn:
+• Trong object của ClassA có chứa (trong phần 
+thuộc tính) object của ClassB
+• ObjectX của ClassA bị hủy thì ObjectY của ClassB 
+(bên trong ObjectX) vẫn có thể còn tồn tại
+▪ Ví dụ:?
+17
+ClassA ClassB
+
+=== PAGE 18 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Quan hệ Composition
+▪ Đã xác định được ClassA và ClassB có quan 
+hệ Association với nhau
+▪ Xác định rõ hơn:
+• Trong object của ClassA có chứa (trong phần 
+thuộc tính) object của ClassB
+• ObjectX của ClassA bị hủy thì ObjectY của ClassB 
+(bên trong ObjectX) không thể còn tồn tại
+▪ Ví dụ:?
+18
+ClassA ClassB
+
+=== PAGE 19 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Chiều của quan hệ (Association, 
+Aggregation, Composition)
+▪ Nếu quan hệ là 1 chiều: đa số các lời gọi hàm 
+được gọi theo đúng chiều của quan hệ
+▪ Nếu quan hệ là 2 chiều: không vẽ mũi tên
+19
+ClassA ClassB
+
+=== PAGE 20 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Bản số - Multiplicity (Association, 
+Aggregation, Composition)
+▪ Ý nghĩa
+▪ Ví dụ:
+• 1
+• 2
+• 1..*
+• 0..*
+• *
+• 1, 3, 5..9
+20
+ClassA ClassB
+1 1..*
+
+=== PAGE 21 ===
+LOGO
+Quan hệ giữa các lớp đối tượng
+❖Quan hệ Dependency
+▪ ClassA và ClassB không có quan hệ 
+Association
+▪ ClassA “phụ thuộc” vào ClassB
+21
+ClassA ClassB
+class A
+{
+    void    F(B   x)
+    {
+     …
+    }
+};
+class A
+{
+    B    F()
+    {
+     …
+    }
+};
+class A
+{
+    void    F()
+    {
+         B    x;
+    }
+};
+Trong ClassA có 
+sử dụng biến toàn 
+cục (kiểu B), hoặc 
+sử dụng phương 
+thức/thuộc tính 
+static của ClassB
+Tham số truyền vào Kết quả trả ra Biến cục bộ
+
+=== PAGE 22 ===
+LOGO
+Xây dựng sơ đồ lớp
+ở mức phân tích
+22
+
+=== PAGE 23 ===
+LOGO
+Lập danh sách các đối tượng
+❖Tiêu chuẩn nhận dạng đối tượng
+▪ Định danh: Đối tượng phải có tên (thường là danh từ/ngữ danh 
+từ)
+▪ Chu trình sống: có thời điểm sinh ra, có khoảng thời gian hoạt 
+động, có thời điểm chấm dứt
+▪ Sự độc lập tương đối với các đối tượng khác
+▪ …
+❖Đề nghị:
+▪ Con người
+▪ Vật thể
+▪ Tổ chức
+▪ Vật lý
+▪ Không gian
+▪ Thời gian…
+23
+
+=== PAGE 24 ===
+LOGO
+Lập danh sách các đối tượng
+❖Lập danh sách các đối tượng liên quan đến 
+hệ thống
+24
+Đối tượng đề nghị
+Không là đối tượng Là đối tượng
+Được quan tâmKhông được quan tâm
+Đối tượng chínhĐối tượng phụ
+Tiêu chuẩn nhận dạng đối tượng: có rất nhiều trường phái 
+
+=== PAGE 25 ===
+LOGO
+Ví dụ
+❖Ví dụ: Xét ngữ cảnh là 1 trường PTTH với 
+phần mềm quản lý trường cấp 3:
+❖Danh sách đề nghị:
+▪ Học sinh Tổ Bộ môn  Số tiết
+▪ Giáo viên BGH   TKB
+▪ Môn học Khối   Bảng điểm
+▪ Lớp  Phụ huynh  Phòng
+▪ Học kỳ  ĐTB  Học phí
+▪ Năm học Diện HS …
+❖Đối tượng/Không phải đối tượng?
+25
+
+=== PAGE 26 ===
+LOGO
+Ví dụ
+❖Được quan tâm?
+▪ Phần mềm quản lý học sinh:
+• Học sinh, Giáo viên, Môn học, Lớp, Khối, Phụ 
+huynh, Học kỳ, Năm học…
+▪ Phần mềm quản lý giáo viên:
+• Giáo viên, Tổ bộ môn, Môn học, Khối, Lớp, Học 
+kỳ, Năm học…
+▪ Phần mềm xếp thời khóa biểu:
+• Giáo viên, Môn học, Lớp, Phòng, Học kỳ,Năm 
+học…
+26
+
+=== PAGE 27 ===
+LOGO
+Ví dụ
+❖Đối tượng chính?Đối tượng phụ
+▪ Phần mềm quản lý học sinh:
+• Học sinh, Giáo viên, Môn học, Lớp, Khối, Phụ 
+huynh, Học kỳ, Năm học…
+▪ Phần mềm quản lý giáo viên:
+• Giáo viên, Tổ bộ môn, Môn học, Khối, Lớp, Học 
+kỳ, Năm học…
+▪ Phần mềm xếp thời khóa biểu:
+• Giáo viên, Môn học, Lớp, Phòng, Học kỳ,Năm 
+học…
+27
+
+=== PAGE 28 ===
+LOGO
+Lập danh sách các quan hệ
+❖Tiêu chí đánh giá:
+▪ Động từ
+▪ Sự phụ thuộc giữa các đối tượng (chủ yếu xét các đối 
+tượng chính)
+❖Đề nghị:
+▪ Quan hệ theo thời gian
+• Ít biến động: sau 1 thời gian dài mới thay đổi 
+(thường làm về mặt tổ chức)
+• Biến động: quan hệ xảy ra vào lúc nào, trong 
+thông tin có thuộc tính về thời gian, thay đổi theo 
+thời gian (thường quan tâm nhiều đến loại quan hệ 
+này)
+28
+
+=== PAGE 29 ===
+LOGO
+Lập danh sách các quan hệ(tt)
+❖Tiêu chí đánh giá:
+▪ Động từ
+▪ Sự phụ thuộc giữa các đối tượng (chủ yếu xét các đối tượng 
+chính)
+❖Đề nghị:
+▪ Quan hệ theo thời gian
+▪ Quan hệ về tổ chức (thường liên quan đến đối 
+tượng phụ)
+▪ Quan hệ về không gian (thường liên quan đến 
+đối tượng phụ
+▪ Quan hệ theo vai trò: Chủ động/Bị động
+❖Ví dụ:?
+29
+
+=== PAGE 30 ===
+LOGO
+Nhận dạng thuộc tính
+❖Sự phụ thuộc (không có ý nghĩa rõ ràng khi 
+đứng độc lập)
+▪ Phụ thuộc một đối tượng ➔ Thuộc tính của đối tượng
+▪ Phụ thuộc nhiều đối tượng ➔ Thuộc tính của quan hệ
+❖Các loại thuộc tính 
+▪ Định danh (thường của đối tượng)
+▪ Phân loại
+▪ Thời gian
+▪ Không gian
+▪ Định lượng
+▪ …
+❖Ví dụ:?
+30
+
+=== PAGE 31 ===
+LOGOCác bước xây dựng 
+sơ đồ lớp ở mức phân tích
+❖Bước 1: Xác định các lớp đối tượng, quan 
+hệ và thuộc tính trực tiếp từ yêu cầu của 
+hệ thống
+▪ Xét lần lượt từng biểu mẫu và quy định
+• Nếu trong sơ đồ lớp hiện tại chưa có thể lưu trữ 
+được thông tin cần thiết:
+– Cần bổ sung thuộc tính vào lớp đối tượng đã có?
+– Cần bổ sung thuộc tính vào quan hệ đã có?
+– Cần bổ sung thêm quan hệ giữa các lớp đối tượng đã có?
+– Cần bổ sung thêm lớp đối tượng mới?
+31
+
+=== PAGE 32 ===
+LOGOCác bước xây dựng 
+sơ đồ lớp ở mức phân tích
+❖Bước 2:
+▪ Nếu một lớp đối tượng có thuộc tính có cấu 
+trúc phức tạp hoặc có các thuộc tính có liên 
+hệ chặt chẽ với nhau và có ngữ nghĩa cụ thể 
+thì nên tách ra thành lớp đối tượng phụ
+32
+
+=== PAGE 33 ===
+LOGOCác bước xây dựng 
+sơ đồ lớp ở mức phân tích
+❖Bước 3:
+▪ 3.1. Nhiều lớp đối tượng có nhiều đặc điểm 
+chung 
+ ➔ Xây dựng lớp đối tượng tổng quát chung 
+cho các lớp đối tượng cụ thể này
+33
+
+=== PAGE 34 ===
+LOGOCác bước xây dựng 
+sơ đồ lớp ở mức phân tích
+❖Bước 3:
+▪ 3.2. Một lớp đối tượng có thuộc tính phân loại 
+và cách xử lý trong các phương thức của đối 
+tượng thuộc lớp này phụ thuộc vào giá trị của 
+thuộc tính phân loại 
+ ➔ Tách lớp đối tượng này thành nhiều lớp 
+đối tượng con tương ứng với mỗi (nhóm) giá 
+trị của thuộc tính phân loại
+34
+
+=== PAGE 35 ===
+LOGOCác bước xây dựng 
+sơ đồ lớp ở mức phân tích
+❖Bước 4:
+▪ Hiệu chỉnh các quan hệ đã có để phù hợp với 
+các lớp đối tượng vừa được điều chỉnh
+❖Bước 5:
+▪ Kiểm tra lại sơ đồ lớp và hiệu chỉnh (theo kinh 
+nghiệm)
+❖Bước 6:
+▪ Bổ sung các trách nhiệm (phương thức) vào 
+các lớp đối tượng ở mức phân tích
+35
+
+=== PAGE 36 ===
+LOGO
+36
+
+=== PAGE 37 ===
+LOGO
+37
+
+=== PAGE 38 ===
+LOGO
+38
+
+=== PAGE 39 ===
+LOGO
+39
+
+=== PAGE 40 ===
+LOGO
+Kết quả: Sơ đồ lớp ở mức phân tích
+❖Sơ đồ lớp
+❖Danh sách các lớp đối tượng và quan hệ
+40
+STT Tên lớp/quan hệ Loại Ý nghĩa/ghi chú
+… … … …
+
+=== PAGE 41 ===
+LOGO
+Kết quả: Sơ đồ lớp ở mức phân tích
+❖ Sơ đồ lớp
+❖ Danh sách các lớp đối tượng và quan hệ
+❖ Mô tả chi tiết từng lớp đối tượng và quan hệ
+▪ Với mỗi lớp đối tượng:
+• Mô tả các thuộc tính
+• Danh sách các trách nhiệm chính
+▪ Với mỗi quan hệ:
+41
+STT Tên thuộc tính Kiểu Ràng buộc Ý nghĩa/ghi chú
+… … … … …
+STT Tên thuộc tính Kiểu Ràng buộc Ý nghĩa/ghi chú
+… … … … …
+
+=== PAGE 42 ===
+LOGO
+Áp dụng
+❖Áp dụng thực tế vào các bài tập 
+▪ Xác định các lớp đối tượng chính
+▪ Xác định các thông tin và hành động/trách nhiệm của 
+mỗi lớp đối tượng chính
+▪ Xác định các quan hệ chính
+▪ Xác định các lớp đối tượng phụ, các danh mục
+42
+
+=== PAGE 43 ===
+LOGO
+Sơ đồ trạng thái
+43
+
+=== PAGE 44 ===
+LOGO
+Các khái niệm
+❖Sơ đồ trạng thái
+▪ Mô tả chu trình sống của các đối tượng chính 
+từ khi sinh ra, hoạt động & mất đi
+▪ Mỗi đối tượng có thể có nhiều sơ đồ trạng 
+thái theo các góc nhìn khác nhau
+❖Trạng thái & biến cố
+▪ Trạng thái của đối tượng diễn đạt tình trạng 
+hiện có của đối tượng (có ý nghĩa trong một 
+đoạn thời gian)
+▪ Biến cố là các sự kiện xảy ra làm cho đối 
+tượng chuyển trạng thái.
+44
+
+=== PAGE 45 ===
+LOGO
+Một số ký hiệu
+45
+Tên trạng thái
+Tên trạng thái
+stateVar : type = value
+entry/ entry action
+do/ activity
+exit/ exit action
+Tên biến cố (tham số)
+Tên hành động (tham số)
+[Điều kiện]
+Trạng thái
+Chuyển đổi trạng thái
+
+=== PAGE 46 ===
+LOGO
+Các trạng thái đặc biệt
+❖Trang thái bắt đầu
+▪ Là trạng thái khi mới được khởi tạo của object
+▪ Bắt buộc phải có
+▪ Chỉ có thể có 1 trạng thái bắt đầu 
+❖Trang thái kết thúc
+▪ Chỉ vị trí kết thúc đời sống của object
+▪ Không nhất thiết phải thể hiện
+▪ Có thể có nhiều
+46
+Tr/thái bắt đầu
+Tr/thái kết thúc
+
+=== PAGE 47 ===
+LOGO
+Sơ đồ trạng thái
+❖ Là đồ thị có hướng với các node là các trạng thái nối với nhau bới 
+các cung mô tả việc chuyển đổi trạng thái
+47
+Tên trạng thái
+stateVar : type = value
+entry/ entry action
+do/ activity
+exit/ exit action
+Biến cố(tham số) 
+[Biểu thức điều kiện]
+/ Hành động (tham số)
+Trạng thái Biến cố
+Chuyển đổi trạng thái
+Hành động
+Hành động
+
+=== PAGE 48 ===
+LOGO
+Sơ đồ trạng thái
+48
+S1
+S4
+S2
+S3
+S5
+S6
+B1
+B2
+B3 B4
+B5
+B6
+B7
+B8
+B9
+B1, B2: biến cố sinh
+B4, B8, B9: biến cố mất
+B3, B5, B6, B7: biến cố hoạt động
+
+=== PAGE 49 ===
+LOGO
+Sơ đồ trạng thái
+❖ Mỗi sơ đồ trạng thái sẽ ánh xạ thành một thuộc tính của đối 
+tượng
+❖ Các trạng thái của đối tượng trong 1 sơ đồ trạng thái không 
+giao nhau và giá trị của thuộc tính tương ứng chỉ mang 1 
+trong các giá trị tương ứng
+❖ Sơ đồ trạng thái càng chi tiết sẽ phục vụ:
+▪ Có những xử lý thích hợp trong kiểm tra ràng buộc
+▪ Có những xử lý thích hợp trong xử lý biến cố
+▪ Phục vụ tra cứu, tìm kiếm
+❖ Khi đã quan tâm đến sơ đồ trạng thái của 1 đối tượng
+▪ Thường trong ứng dụng không còn chức năng xóa (thật sự) đối 
+tượng này
+▪ Các đối tượng sẽ tồn tại ở trạng thái mất thay vì bị xóa thật sự
+49
+
+=== PAGE 50 ===
+LOGO
+Sơ đồ trạng thái
+❖Thông thường, sơ đồ trạng thái của 1 đối 
+tượng có dạng
+50
+Sẵn sàng
+Tạm dừngHoạt động
+Chấm dứt
+
+=== PAGE 51 ===
+LOGO
+51
+
+=== PAGE 52 ===
+LOGO
+Cách xây dựng sơ đồ trạng thái
+❖Cách 1:
+▪ Xác định quá trình hoạt động bình thường của đối 
+tượng từ khi sinh ra đến khi mất đi
+▪ Bổ sung các trạng thái và biến cố liên quan đến
+• Sinh ra
+• Hoạt động
+• Tạm dừng
+• Mất đi
+52
+
+=== PAGE 53 ===
+LOGO
+Cách xây dựng sơ đồ trạng thái
+❖Cách 2:
+▪ Xác định các trạng thái sinh
+▪ Xác định các trạng thái cuối
+▪ Xác định các trạng thái trung gian và các biến 
+cố/hành động làm chuyển trạng thái
+53
+
+=== PAGE 54 ===
+LOGO
+Kết quả: Sơ đồ trạng thái
+54
+S1
+S4
+S2
+S3
+S5
+S6
+B1
+B2
+B3 B4
+B5
+B6
+B7
+B8
+B9
+STT Trạng thái Ý nghĩa Xử lý liên quan Ghi chú
+… … … … …
+STT Biến cố Ý nghĩa Xử lý liên quan Ghi chú
+… … … … …
+Bảng mô tả các trạng thái
+Bảng mô tả các biến cố
+Sơ đồ trạng thái
+
+=== PAGE 55 ===
+LOGO
+55
+
+=== PAGE 56 ===
+LOGO
+Ví dụ
+56
+Unassigned
+Assigned
+removeProfessor
+addProfessor
+
+=== PAGE 57 ===
+LOGO
+Ví dụ
+57
+add student / numStudents = numStudents + 1
+Unassigned
+Assigned
+Full
+Cancelled
+do: Send cancellation notices
+Committed
+do: Generate class roster
+closeRegistration [ has Professor assigned ]
+close
+/ numStudents = 0
+addProfessor
+closeRegistration
+remove student / numStudents = numStudents - 1
+cancel
+removeProfessor
+[ numStudents = 10 ]
+close[ numStudents < 3 ]
+closeRegistration[ numStudents >= 3 ]
+close[ numStudents >= 3 ]
+add student /
+numStudents = numStudents + 1
+cancel
+remove student / numStudents = numStudents - 1
+close
+[ numStudents = 10 ] cancel
+
+=== PAGE 58 ===
+LOGO
+Ví dụ: trạng thái lồng nhau
+58
+superstate
+substate
+add student /
+numStudents = numStudents + 1
+Open
+Unassigned
+Assigned
+H
+add a professor
+Closed
+Cancelled
+do: Send cancellation notices
+Full
+Committed
+do: Generate class roster
+closeRegistration
+close
+remove a professor
+close[ numStudents < 3 ]
+[ numStudents = 10 ]
+closeRegistration[ numStudents >= 3 ]
+close[ numStudents >= 3 ]
+closeRegistration [ has Professor assigned ]
+close
+/ numStudents = 0
+remove student / numStudents = numStudents - 1
+cancel
+cancel
+
+=== PAGE 59 ===
+LOGO
+Luyện tập
+❖Vẽ sơ đồ trạng thái của thang máy
+❖Vẽ sơ đồ trạng thái của 1 đèn giao thông
+❖Vẽ sơ đồ trạng thái của 1 cặp đèn giao 
+thông tại ngã tư
+❖Vẽ sơ đồ trạng thái của 1 độc giả
+❖Vẽ sơ đồ trạng thái của 1 cuốn sách
+❖Vẽ sơ đồ trạng thái của 1 phòng trong 
+khách sạn
+❖Vẽ sơ đồ trạng thái của 1 quân cờ
+❖…
+59
+
+=== PAGE 60 ===
+LOGO
+Chương
+ 
+5:
+Phân
+ 
+tích
+ 
+đối
+ 
+tượng
+ 
+hệ
+ 
+thống
+
+=== PAGE 61 ===
+LOGO
+Tài liệu tham khảo
+❖ Bài giảng dựa chính trên bài giảng “Xây dựng 
+phần mềm hướng đối tượng” - ThS Trần Minh Triết 
+– ĐH KHTN
+❖ Bài giảng “Phân tích và thiết kế hướng đối tượng” 
+– TS Phạm Ngọc Nam – ĐH BK HN
+❖ Bài giảng “Phân tích và thiết kế hướng đối tượng” 
+– ThS Phạm Nguyễn Cương – ĐH KHTN
+❖….
+61
+
+=== PAGE 62 ===
+LOGO
+Nội dung
+1. Các cách tiếp cận xác định lớp
+2. Xác định mối quan hệ giữa các lớp
+3. Xác định thuộc tính và hành vi của lớp
+62
+
+=== PAGE 63 ===
+LOGO
+Nội dung
+1. Các cách tiếp cận xác định lớp
+2. Xác định mối quan hệ giữa các lớp
+3. Xác định thuộc tính và hành vi của lớp
+63
+
+=== PAGE 64 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+❖Tiếp cận theo cụm danh từ
+❖Tiếp cận theo phân loại
+❖Tiếp cận theo phân tích hoạt động use 
+case
+64
+
+=== PAGE 65 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Đối với các thực thể sự vật: kiểm chứng xem 
+có nhu cầu quản lý thông tin về thực thể này 
+trong hệ thống không? 
+• Nếu có, xác định một lớp trong sơ đồ phân tích 
+biểu diễn cho thực thể này
+– Xác định tên lớp: tên của sự vật
+– Thuộc tính: bổ sung các thuộc tính mô tả đầy đủ 
+thông tin mà hệ thống có nhu cầu quản lý về đối 
+tượng
+65
+
+=== PAGE 66 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Ví dụ:
+Hành lý
+NVL
+Hàng hoá
+Hành lý
+NVL
+Hàng hoá
+66
+
+=== PAGE 67 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Đối với thực thể thông tin:
+• Nếu thực thể mô tả thông tin về một hoạt động 
+giao dịch hệ thống thì chuyển thành một lớp trong 
+mô hình phân tích
+• Nếu thực thể là một dạng thông tin tổng hợp → có 
+thể tách thành nhiều lớp mới hoặc bổ sung thông 
+tin cho các lớp đang tồn tại
+67
+
+=== PAGE 68 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Đối với thực thể thông tin:
+• Ví dụ:
+Hoá đon
+Hoá đơn
+Thẻ thư viện
+Thẻ thư viện
+68
+
+=== PAGE 69 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Đối với thực thể thông tin:
+▪ Ví dụ:
+HOÁ ĐƠN
+Số HĐ:…… Ngày:../…/…
+Khách hàng: ……………………..
+Địa chỉ:…………………………..
+Người lập:………………………..
+Mã 
+số
+Tên 
+hàng
+ĐVT
+ Số lượng
+ Đơn 
+giá
+001
+004
+…
+H1
+H7
+…
+Cái
+Kg
+…
+100
+1000
+…
+2000
+3000
+…
+Tổng trị giá: ………
+Hoá đơn
+Khách hàng
+Hàng
+Chi tiết HĐ
+69
+
+=== PAGE 70 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Đối với thực thể thừa tác viên và các thực thể 
+tổ chức khác
+Nhân viên bán hàng Nhân viên quản lý Thủ kho
+Nhân viên
+Độc giả
+Đọc giả
+Nhà CC
+Nhà CCấp
+70
+
+=== PAGE 71 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo thực thể nghiệp vụ
+▪ Ví dụ:
+Khách hàng NgườI quản lý
+Hồ sơ khách hàng Hoá đơn Thẻ khách hàng thân thiết
+0..n 1
+1
+0..n 0..n 0..n
+1
+1
+Khách hàng
+Hoá đơn
+Thẻ KHTT0..1
+1
+1
+1..n
+71
+
+=== PAGE 72 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –
+phrase)
+▪ Đề xuất bởi Rebecca Wirfs-Brock, Brian 
+Wilkerson, và Lauren Wiener 
+▪ Ý tưởng: xác định các lớp thông qua việc đọc 
+trong các văn bản mô tả use case hoặc các 
+mô tả yêu cầu để tìm kiếm và trích lọc các 
+cụm danh từ 
+Class giả tạo 
+(irrelevant)
+Class mờ (fuzzy 
+class)
+Class hiển nhiên
+(relevant class)
+72
+
+=== PAGE 73 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –
+phrase)
+Mô tả use 
+case, yêu cầu
+Xác định các 
+danh từ, cụm 
+danh từ
+Danh từ, cụm 
+danh từ
+Loại bỏ các danh 
+từ mô tả class 
+giả
+Danh từ, cụm 
+danh từ ứng 
+viên 
+Đồng nhất các 
+class trùng 
+nghĩa
+Danh sách các 
+class Loại các danh từ thuộc tính Loại các class không có mục 
+tiêu
+73
+
+=== PAGE 74 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Ví dụ: xác định các class của hệ thống ATM – Các 
+cụm danh từ tìm được
+Tài khoản
+Số dư tài khoản
+Số tiền
+Tiến trình đăng nhập
+Thẻ ATM
+Máy ATM
+Ngân hàng
+Khách hàng ngân hàng
+Khách hàng
+Tài khoản khách hàng
+VND 
+Thẻ
+Tiền mặt
+Bao thư
+Bốn ký số
+Ngân quỹ
+Tiền
+PIN
+PIN không hợp lệ
+Thông điệp
+Mật khẩu
+Mã PIN
+Mẫu tin
+Bước
+Hệ thống
+Giao dịch
+Lịch sử giao dịch 
+74
+
+=== PAGE 75 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Loại bỏ các lớp giả (irrelevant):
+Tài khoản
+Số dư tài khoản
+Số tiền
+Tiến trình đăng nhập
+Thẻ ATM
+Máy ATM
+Ngân hàng
+Khách hàng ngân hàng
+Khách hàng
+Tài khoản khách hàng
+VND 
+Thẻ
+Tiền mặt
+Bao thư
+Bốn ký số
+Ngân quỹ
+Tiền
+PIN
+PIN không hợp lệ
+Thông điệp
+Mật khẩu
+Mã PIN
+Mẫu tin
+Bước
+Hệ thống
+Giao dịch
+Lịch sử giao dịch 
+75
+
+=== PAGE 76 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Đồng nhất các ứng viên trùng lắp
+Khách hàng, Khách hàng ngân hàng  = Khách hàng
+Tài khoản, Tài khoản khách hàng  = Tài khoản
+PIN, Mã PIN     = PIN
+Tiền, Ngân quỹ    = Ngân quỹ
+Thẻ ATM, Thẻ     = Thẻ ATM
+76
+
+=== PAGE 77 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Đồng nhất các ứng viên trùng lắp
+Tài khoản
+Số dư tài khoản
+Số tiền
+Tiến trình đăng nhập
+Thẻ ATM
+Máy ATM
+Ngân hàng
+Khách hàng ngân hàng
+Khách hàng
+Tài khoản khách hàng
+VND 
+Thẻ
+Tiền mặt
+Bao thư
+Bốn ký số
+Ngân quỹ
+Tiền
+PIN
+PIN không hợp lệ
+Thông điệp
+Mật khẩu
+Mã PIN
+Mẫu tin
+Bước
+Hệ thống
+Giao dịch
+Lịch sử giao dịch 
+77
+
+=== PAGE 78 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Xác định danh từ, cụm danh từ có thể là thuộc tính:
+• Chỉ được sử dụng như là giá trị
+• Không có nhiều hơn một đặc trưng riêng, hoặc chỉ mô tả một 
+đặc trưng của đối tượng khác 
+▪ Ví dụ: hệ thống ATM (tiếp tục phân tích)
+• Số tiền: → một giá trị, không phải một lớp
+• Số dư tài khoản: → thuộc tính của lớp Tài khoản
+• PIN không hợp lệ: → một giá trị, không phải một lớp
+• Mật khẩu: → một thuộc tính (có thể của lớp Khách hàng)
+• Lịch sử giao dịch: → một thuộc tính (có thể của lớp Giao dịch)
+• PIN: → một thuộc tính (có thể của lớp Khách hàng)
+78
+
+=== PAGE 79 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Danh sách danh từ, cụm danh từ còn lại
+Tài khoản
+Số dư tài khoản
+Số tiền
+Tiến trình đăng nhập
+Thẻ ATM
+Máy ATM
+Ngân hàng
+Khách hàng ngân hàng
+Khách hàng
+Tài khoản khách hàng
+VND 
+Thẻ
+Tiền mặt
+Bao thư
+Bốn ký số
+Ngân quỹ
+Tiền
+PIN
+PIN không hợp lệ
+Thông điệp
+Mật khẩu
+Mã PIN
+Mẫu tin
+Bước
+Hệ thống
+Giao dịch
+Lịch sử giao dịch 
+79
+
+=== PAGE 80 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Loại bỏ các ứng viên không mục tiêu hoặc không 
+thuộc phạm vi hệ thống:
+• Thông điệp 
+• Hệ thống
+• Mẫu tin
+• Ngân quỹ
+• VND
+• Tiền mặt
+• Tiến trình đăng nhập
+80
+
+=== PAGE 81 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Loại bỏ các ứng viên không mục tiêu hoặc không 
+thuộc phạm vi hệ thống:
+Tài khoản
+Số dư tài khoản
+Số tiền
+Tiến trình đăng nhập
+Thẻ ATM
+Máy ATM
+Ngân hàng
+Khách hàng ngân hàng
+Khách hàng
+Tài khoản khách hàng
+VND 
+Thẻ
+Tiền mặt
+Bao thư
+Bốn ký số
+Ngân quỹ
+Tiền
+PIN
+PIN không hợp lệ
+Thông điệp
+Mật khẩu
+Mã PIN
+Mẫu tin
+Bước
+Hệ thống
+Giao dịch
+Lịch sử giao dịch 
+81
+
+=== PAGE 82 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Kết quả các lớp được xác định:
+• Máy ATM: cung cấp một giao diện tới ngân hàng
+• Thẻ ATM: cung cấp một khách hàng với một khoá tới một 
+tài khoản
+• Khách hàng: một khách hàng là một cá nhân sử dụng máy 
+ATM, có một tài khoản.
+• Ngân hàng: các khách hàng phụ thuộc vào ngân hàng. Nó 
+là một nơi tập trung các tài khoản và xử lý các giao dịch tài 
+khoản.
+• Tài khoản: nó mô hình hoá một tài khoản của khách hàng 
+và cung cấp các dịch vụ về tài khoản cho khách hàng
+• Giao dịch: mô tả một giao tác của khách hàng khi sử dụng 
+thẻ ATM. Một giao tác được lưu trữ với thời gian, ngày, 
+loại, số tiền, và số dư 
+82
+
+=== PAGE 83 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo cụm danh từ (noun –phrase)
+▪ Kết quả các lớp được xác định:
+MáyATM
+TàiKhoản
+ThẻATM KháchHàng
+NgânHàng GiaoDịch
+83
+
+=== PAGE 84 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân loại: phân loại các lớp 
+của hệ thống dựa trên các mẫu chung.
+▪ Lớp khái niệm (concept): Một khái niệm là một quan 
+niệm hoặc sự hiểu biết riêng biệt về thế giới. Lớp 
+khái niệm bao gồm các nguyên lý được dùng để tổ 
+chức hoặc để lưu trữ các hoạt động và các trao đổi 
+về mặt quản lý.
+• Ví dụ: các lớp khái niệm có thể là: phương pháp, hiệu năng, 
+mô hình,… 
+▪ Lớp sự kiện (event): Lớp sự kiện là các điểm thời 
+gian cần được lưu trữ. Các sự việc xảy ra tại một 
+thời điểm, hoặc một bước trong một dãy tuần tự các 
+bước 
+• Ví dụ: đăng ký, hoá đơn, đơn  hàng, phiếu nhập,…
+84
+
+=== PAGE 85 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân loại:
+▪ Lớp tổ chức (organisation): tập hợp con người, tài 
+nguyên, phương tiện, hoặc những nhóm xác định 
+chức năng người dùng 
+• Ví dụ: đơn vị, bộ phận, phòng ban, chức danh,…
+▪ Lớp con người (people): lớp con người thể hiện các 
+vai trò khác nhau của người dùng trong việc tương 
+tác với hệ thống. Những đối tượng này thường là 
+người dùng hệ thống hoặc những người không sử 
+dụng hệ thống nhưng thông tin về họ được lưu trữ 
+bởi hệ thống 
+• Ví dụ: Sinh viên, khách hàng, giáo viên, nhân viên,…
+85
+
+=== PAGE 86 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân loại:
+▪ Lớp vị trí (place): Các vị trí vật lý mà hệ thống cần 
+mô tả thông tin về nó.
+• Ví dụ: toà nhà, kho, văn phòng, chi nhánh, đại lý,…
+▪ Lớp sự vật hữu hình và thiết bị: các đối tượng vật lý 
+hoặc các nhóm của đối tượng hữu hình mà có thể 
+cảm nhận trực quan và các thiết bị mà hệ thống 
+tương tác.
+• Ví dụ: xe hơi, máy bay, … là các sự vật hữu hình; thiết bị 
+cảm ứng nhiệt là một lớp thiết bị.   
+86
+
+=== PAGE 87 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân loại: 
+▪ Ví dụ: hệ thống ATM
+• Các lớp khái niệm:
+• Các lớp sự kiện:
+• Các lớp tổ chức:
+TàiKhoản
+GiaoDịch
+NgânHàng
+87
+
+=== PAGE 88 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân loại: 
+▪ Ví dụ: hệ thống ATM
+• Các lớp con người:
+• Các lớp sự vật hữu hình và thiết bị
+KháchHàng
+MáyATM ThẻATM
+88
+
+=== PAGE 89 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân tích hoạt động use case:
+Tác nhân
+Hệ thống
+Đối tượng nào của hệ 
+thống sẽ trực tiếp tương 
+tác với tác nhân?
+:Đối tượng Đối tượng nào tiếp theo 
+được chuyển giao trách 
+nhiệm ?
+…
+:Đối tượng 
+Kết thúc mô tả kịch bản của use case cho 
+phép xác định tất cả các lớp liên tham gia89
+
+=== PAGE 90 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân tích hoạt động use case: 
+Ví dụ
+Độc giả Thủ thư
+Yêu cầu mượn 
+sách Kiểm tra thẻ
+:Hồ sơ đọc giả
+Kiểm tra điều kiện
+[Không thoả]Từ chối
+Cập nhật hồ sơ độc giả
+Sách gởi đọc giả
+:Sách
+Cập nhật lại trạng thái sách
+Từ chối thẻ 
+không hợp lệ
+Use case Mượn sách 90
+
+=== PAGE 91 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo phân tích hoạt động use case: 
+▪ Ví dụ: phân tích use case “Giải quyết PIN 
+không hợp lệ”. Các hoạt động khách hàng có 
+thể thực hiện với hệ thống:
+• Đưa vào thẻ ATM
+• Nhập mã PIN
+• Rút thẻ ATM
+91
+
+=== PAGE 92 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Tiếp cận theo 
+phân tích hoạt 
+động use case: 
+▪ Ví dụ: phân 
+tích use case 
+“Giải quyết 
+PIN không 
+hợp lệ”. 
+ : 
+KháchHàng
+ : MáyATM  : KháchHàngNgânHàng
+Đưa thẻ vào ATM
+Yêu cầu PIN
+Nhập mã PIN Kiểm tra mã PIN
+Mã PIN không hợp lệ
+Thông báo mã PIN không hợp lệ
+Nhảy thẻ
+Yêu cầu lấy thẻ
+Lây thẻ
+Hiển thị màn hình 
+chính
+92
+
+=== PAGE 93 ===
+LOGO
+Các cách tiếp cận xác định lớp
+❖Ví dụ: phân 
+tích use case 
+“Rút tiền”. 
+ : KháchHàngNgânHàng  : MáyATM  : TàiKhoản
+Đưa vào thẻ ATM
+Yêu cầu PIN
+Nhập mã PIN Kiểm tra mã PIN
+Mã PIN hợp lệ
+Yêu cầu số tiền
+Nhập số tiền
+Xử lý giao tác rút
+Giao tác thành công
+Phân phối tiền mặt
+Yêu cầu lấy thẻ
+Lấy thẻ
+Yêu cầu tiếp tục
+Kết thúc
+In hoá đơn
+93
+
+=== PAGE 94 ===
+LOGO
+Nội dung
+1. Các cách tiếp cận xác định lớp
+2. Xác định mối quan hệ giữa các lớp
+3. Xác định thuộc tính và hành vi của lớp
+94
+
+=== PAGE 95 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Hướng dẫn xác định mối kết hợp:
+• Một sự phụ thuộc giữa hai hay nhiều lớp có thể 
+thiết lập thành mối kết hợp. Mối kết hợp thường 
+tương ứng với một động từ hoặc cụm giới từ như 
+là thành phần của, làm việc cho, chứa trong, …
+• Một tham chiếu từ một lớp đến một lớp khác là 
+một mối kết hợp.
+95
+
+=== PAGE 96 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Các mẫu xác định mối kết hợp:
+• Mối kết hợp vị trí (location): liên kết tới, thành phần 
+của, làm việc tại, ….
+• Ví dụ:
+Nhân Viên Chi NhánhLàm việc tại
+Buổi Học Phòng HọcHọc tại
+96
+
+=== PAGE 97 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Các mẫu xác định mối kết hợp:
+• Mối kết hợp sở hữu: của, có, thuộc,…
+• Ví dụ:
+Cầu Thủ Đội BóngLà thành phần của
+Phòng Toà NhàChứa trong
+97
+
+=== PAGE 98 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Các mẫu xác định mối kết hợp:
+• Mối kết hợp truyền thông, liên lạc 
+(communication): đặt tới, trao đổi với, gởi cho, tiếp 
+nhận từ,… 
+Đơn Hàng Nhà CCấpĐặt tới
+Bản Yêu Cầu Phòng BanGởi tới
+98
+
+=== PAGE 99 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Mối kết hợp phản thân: là mối quan hệ được 
+thiết lập giữa một đối tượng của một lớp với 
+một đối tượng khác cũng thuộc lớp đó.
+Nhân Viên Thành Phần
+Quản lý Chứa trong
+99
+
+=== PAGE 100 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Loại bỏ các mối kết hợp không cần thiết: 
+• Mối kết hợp cài đặt: là mối kết hợp mô tả sự liên 
+quan giữa các lớp trong giai đoạn thiết kế cài đặt 
+hệ thống bên trong môi trường phát triển hoặc 
+ngôn ngữ lập trình cụ thể và không phải là môi liên 
+kết giữa các đối tượng mô tả nghiệp vụ 
+• Mối kết hợp đa phân: là mối kết hợp giữa ba lớp 
+trở lên, mối kết hợp này phức tạp trong cách thể 
+hiện → Nếu có thể, phát biểu lại nó dùng mối kết 
+hợp nhị phân 
+100
+
+=== PAGE 101 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Loại bỏ các mối kết hợp không cần thiết – Ví 
+dụ:
+Lớp học Môn học
+Phòng họcGiáo viên
+Lớp học Môn học
+Phòng họcGiáo viên
+Buổi học
+101
+
+=== PAGE 102 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Loại bỏ các mối kết hợp không cần thiết:
+• Mối kết hợp trực tiếp dư thừa: là các mối kết hợp 
+được định nghĩa trong ngữ nghĩa của những mối 
+kết hợp khác (còn gọi là mối kết hợp suy diễn 
+hoặc bắc cầu) 
+Phiếu đặt hàng
+Nhà cung cấp Phiếu giao hàng
+Đặt tới Liên quan
+Từ
+0..*1
+0..*
+1 0..1
+1
+102
+
+=== PAGE 103 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Xác định bản số cho mối kết hợp: (min, max)
+• 1; 0..1;
+• 1..*;
+• 0..*;
+• a..* : a là hằng
+Bản Yêu Cầu Phòng BanGởi tới
+0..*
+1
+Bản số
+103
+
+=== PAGE 104 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Xác định bản số cho mối kết hợp: (min, max)
+• Ví dụ:
+Cầu Thủ Đội BóngLà thành phần của
+Phòng Toà NhàChứa trong
+2..*
+1
+1..*
+1..*
+Đơn Hàng Nhà CCấpĐặt tới 1
+0..*
+104
+
+=== PAGE 105 ===
+LOGO
+Xác định mối quan hệ
+❖Xác định mối kết hợp association:
+▪ Xác định bản số cho mối kết hợp: (min, max)
+• Ví dụ: hệ thống ATM
+MáyATM
+NgânHàng
+KháchHàng
+TàiKhoản GiaoDịch
+1
+Có 0..n1..n
+1
+Của
+Thuộc
+Thuộc
+0..*
+1
+1..*
+1
+1
+1..*
+1
+1..*
+105
+
+=== PAGE 106 ===
+LOGO
+Xác định mối kết hợp
+❖Xác định lớp kết hợp (Association class)
+Hoá Đơn Sản Phẩm0..*
+1..*
+Chi Tiết Hoá Đơn
+sốLượng 
+đơnGiá
+Sinh Viên Khoá Học
+Kết Quả
+điểmTB 
+xếpLoại
+0..*
+1..*
+106
+
+=== PAGE 107 ===
+LOGO
+Xác định mối kết hợp
+❖Xác định lớp kết hợp (Association class)
+Hoá Đơn Sản Phẩm0..*
+1..*
+Chi Tiết Hoá Đơn
+sốLượng 
+đơnGiá
+Hoá Đơn Sản Phẩm
+Chi Tiết Hoá Đơn
+sốLượng 
+đơnGiá
+1
+1..*
+0..*
+1
+107
+
+=== PAGE 108 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt 
+(generalization): Thể hiện quan hệ kế thừa 
+giữa các lớp và một cấu trúc phân cấp xác 
+định những dòng kế thừa này
+• Tiếp cận top-down:
+– Từ một lớp chúng ta tìm kiếm cụm danh từ chứa tên lớp 
+và tính từ (hoặc danh từ). Đánh giá xem cụm danh từ 
+này có thể là một trường hợp đặc biệt cần được quản lý 
+trong hệ thống không 
+– Tìm kiếm xem có những đặc trưng riêng của lớp 
+– Xây dựng mối kết hợp chuyên biệt từ lớp này đến lớp 
+ban đầu
+108
+
+=== PAGE 109 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt 
+(generalization): 
+• Tiếp cận top-down – ví dụ:
+Hoá đơn
+Hoá đơn giao hàng
+GiaoDịch
+GiaoDịchRút GiaoDịchGởi
+Ghi chú: chỉ cần đưa vào các lớp chuyên biệt mà chúng ta xác định được các 
+đặc trưng riêng (thuộc tính, method, liên kết) của nó trong hệ thống.
+109
+
+=== PAGE 110 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt 
+(generalization): 
+• Tiếp cận top-down – ví dụ: phức tạp
+Nhân viên
+Nhân Viên VP Công Nhân
+Trưởng Phòng Thư Ký NV Bán Hàng
+110
+
+=== PAGE 111 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt 
+(generalization): 
+• Tiếp cận bottom-up:
+– Tìm kiếm trong các lớp để xác định xem có các thuộc 
+tính và phương thức giống nhau. Sau đó chúng ta có thể 
+gom nhóm và đưa các thuộc tính và phương thức chung 
+này lên một lớp tổng quát (trừu tượng)
+– Tạo mối kết hợp tổng quát hoá từ các lớp này đến lớp 
+tổng quát mới xác định  
+111
+
+=== PAGE 112 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt 
+(generalization): 
+• Tiếp cận bottom-up – ví dụ:
+Hoá đơn Đơn đặt hàng
+Hàng hoá
+Chứng từ
+112
+
+=== PAGE 113 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt
+• Tiếp cận bottom-up – ví dụ:
+Khách Hàng Nhà CCấp
+Đối Tác
+113
+
+=== PAGE 114 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt
+• Xác định sự tương quan:
+Lớp A1 Lớp A2
+Lớp A
+(complete, disjoint) 
+(incomplete, overlapping) 
+(incomplete, disjoint) 
+(complete, overlapping) 
+114
+
+=== PAGE 115 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt
+• Xác định sự tương quan: - ví dụ
+Khách Hàng Nhà CCấp
+Đối Tác
+(incomplete, disjoint)
+Nhân Viên VP
+Trưởng Phòng Thư Ký NV Bán Hàng
+(incomplete, overlapping)
+Khách Hàng
+Khách Quen
+(incomplete)
+115
+
+=== PAGE 116 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp tổng quát – chuyên biệt
+• Vấn đề đa thừa kế:
+– Phức tạp trong vấn đề kế thừa
+– → Không nên sử dụng (phiên bản gốc UML không đưa 
+vào)
+Giáo Viên Nhà Nghiên Cứu
+Gviên – Nhà NgCứu
+116
+
+=== PAGE 117 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp thành phần (a-part-of, 
+aggregration)
+• Đặc trưng cơ bản
+– Tính bắc cầu: Nếu lớp A là một thành phần của lớp B 
+và lớp B là thành phần của lớp C → lớp A là thành 
+phần của lớp C 
+– Tính đối xứng: nếu lớp A là thành phần của lớp B thì 
+lớp B không phải là thành phần của lớp A 
+Lớp A Lớp B
+Lớp C
+117
+
+=== PAGE 118 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp thành phần (a-part-of, 
+Composition)
+• Tập hợp: một đối tượng vật lý được hình thành từ 
+các đối tượng vật lý thành phần khác  
+Toà Nhà Xe Ô Tô
+Phòng Thùng Xe Bánh Xe Động Cơ
+1
+1..*
+1 1 1
+14..81
+Đơn Hàng
+Dòng HĐ
+1
+1..*
+118
+
+=== PAGE 119 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp thành phần (a-part-of, 
+aggregration)
+• Vật chứa: một đối tựơng vật lý chứa đựng các 
+thành phần nhưng không được cấu tạo bởi các 
+thành phần 
+Container Phòng Học
+Hàng Hoá Bàn Ghế Projector
+1
+1..*
+0..1 0..1 0..1
+0..10..*0..*
+119
+
+=== PAGE 120 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp thành phần (a-part-of, 
+aggregration)
+• Tập hợp – thành viên: một đối tượng khái niệm 
+chứa các thành phần có thể vật lý hoặc khái niệm
+Phòng Ban
+Nhân Viên
+1
+0..*
+Đội Bóng
+Cầu Thủ
+1
+0..*Lớp vật lý
+Lớp khái niệm
+120
+
+=== PAGE 121 ===
+LOGO
+Xác định mối quan hệ
+❖Nâng cấp mối kết hợp:
+▪ Xác định mối kết hợp thành phần 
+▪ Ví dụ: hệ thống ATM
+MáyATM
+NgânHàng
+KháchHàng
+TàiKhoản GiaoDịch
+1
+Có 0..n1..n
+1
+Của
+Thuộc
+Thuộc
+0..*
+1
+1..*
+1
+1
+1..*
+1
+1..*
+121
+
+=== PAGE 122 ===
+LOGO
+Nội dung
+1. Các cách tiếp cận xác định lớp
+2. Xác định mối quan hệ giữa các lớp
+3. Xác định thuộc tính và hành vi của lớp
+122
+
+=== PAGE 123 ===
+LOGO
+Xác định thuộc tính
+❖Câu hỏi: 
+▪ Thông tin gì về đối tượng sẽ được quản lý ?
+❖Nguyên tắc:
+▪ Tên: danh từ; cụm danh từ
+▪ Đơn giản: chỉ dùng đủ thuộc tính để diễn đạt 
+trạng thái đối tượng ở giai đoạn phân tích 
+(thuộc tính sẽ được bổ sung chi tiết hơn ở 
+các giai đoạn tiếp theo)
+▪ Không quá quan tâm về việc phải khám phá 
+hết thuộc tính
+▪ Không quan tâm đến các thuộc tính mô tả cài 
+đặt của đối tượng
+123
+
+=== PAGE 124 ===
+LOGO
+Xác định thuộc tính
+❖Ví dụ: hệ thống ATM
+▪ Lớp Khách Hàng: Phân tích lần lượt tất cả 
+các use case có liên quan đến lớp Khách 
+Hàng như là: “Đăng nhập”, “Xử lý PIN không 
+hợp lệ”. Các thuộc tính của lớp khách hàng 
+như sau:
+KháchHàng
+tênKháchHàng
+họKháchHàng
+mãPIN
+sốThẻ
+124
+
+=== PAGE 125 ===
+LOGO
+Xác định thuộc tính
+❖Ví dụ: hệ thống ATM
+GiaoDịchRút GiaoDịchGởi
+MáyATM
+địaChỉ
+trạngThái
+KháchHàng
+tênKháchHàng
+họKháchHàng
+mãPIN
+sốThẻ
+GiaoDịch
+giaoDịchID
+ngàyGiaoDịch
+thờiGianGiaoDịch
+loạiGiaoDịch
+sốTiền
+sốDư
+TàiKhoản
+sốTàiKhoản
+loạiTàiKhoản
+sốDư
+1
+1
+của
+0..n1
+có
+NgânHàng
+sốTiềnHiệnTại
+125
+
+=== PAGE 126 ===
+LOGO
+Xác định method
+❖Xác định method qua phân tích hoạt động 
+use case:
+▪ Phân tích các dòng message trong sơ đồ tuần 
+tự để xem có thể chuyển một hoạt động thành 
+một method không?
+▪ Nếu có, đặt tên cho method ứng với hoạt 
+động đó
+126
+
+=== PAGE 127 ===
+LOGO
+Xác định method
+❖Ví dụ: hệ 
+thống ATM
+GiaoDịchRút GiaoDịchGởi
+KháchHàng
+tênKháchHàng
+họKháchHàng
+mãPIN
+sốThẻ
+kiểmTraMậtKhẩu()
+GiaoDịch
+giaoDịchID
+ngàyGiaoDịch
+thờiGianGiaoDịch
+loạiGiaoDịch
+sốTiền
+sốDư
+TàiKhoản
+sốTàiKhoản
+loạiTàiKhoản
+sốDư
+rútTiền()
+gởiTiền()
+11
+của
+0..n1
+có
+NgânHàng
+MáyATM
+địaChỉ
+trạngThái
+sốTiềnHiệnTại
+khởiĐộngMáy()
+đóngMáy()
+xemTàiKhoản()
+1
+Ghi chú: các method được phát hiện trong giai 
+đoạn này thường đại diện xử lý cho một use 
+case 127
+
+=== PAGE 128 ===
+LOGO
+Thank You !

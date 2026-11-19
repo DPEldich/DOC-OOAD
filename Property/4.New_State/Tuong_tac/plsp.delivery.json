@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "17604d6c-c3cb-4c46-9110-608af6863c7c",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "D:\\3.Diagram\\4.New_State\\.source\\PLSP.lifecycle.json",
+  "output": "D:\\3.Diagram\\4.New_State\\Tuong_tac\\PLSP.html",
+  "specification": {
+    "sha256": "183135198ba50893e9476ced7f81153eda90c281ec49fb4cdc0f84deb7860754",
+    "bytes": 3588
+  },
+  "artifact": {
+    "sha256": "273f75d220798180313e72ba40b1c2bd6adb86fed9af81162064b72c49f113e0",
+    "bytes": 808825
+  }
+}

@@ -1,0 +1,38 @@
+---
+title: Xác thực · Người dùng hệ thống (NDHT)
+config:
+  theme: base
+  themeVariables:
+    fontFamily: "Times New Roman"
+    fontSize: "15px"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#000000"
+    primaryBorderColor: "#000000"
+    lineColor: "#000000"
+    edgeLabelBackground: "#ffffff"
+  flowchart:
+    curve: linear
+    htmlLabels: false
+---
+flowchart TD
+    S((●)) --> Login([Mở màn hình đăng nhập])
+    Login --> Input([Nhập tên đăng nhập, mật khẩu<br/>và chọn Đăng nhập])
+    Input --> Verify([Kiểm tra dữ liệu và xác thực<br/>tài khoản đang hoạt động])
+    Verify --> Valid{Đăng nhập<br/>hợp lệ?}
+    Valid -->|Không| Error([Báo lỗi và yêu cầu nhập lại])
+    Error --> Input
+    Valid -->|Có| Main([Tạo phiên làm việc<br/>và mở trang chính])
+    Main --> Ready{" "}
+    Ready --> Logout([Chọn Đăng xuất])
+    Logout --> Prompt([Hiển thị yêu cầu xác nhận])
+    Prompt --> Confirm{Xác nhận<br/>đăng xuất?}
+    Confirm -->|Hủy| Keep([Tiếp tục phiên làm việc])
+    Keep --> Ready
+    Confirm -->|Đồng ý| Clear([Xóa phiên và đóng trang chính])
+    Clear --> Back([Hiển thị màn hình đăng nhập])
+    Back --> F((●))
+
+    classDef initial fill:#000,stroke:#000,color:#000
+    classDef final fill:#fff,stroke:#000,color:#000,stroke-width:2px
+    class S initial
+    class F final
